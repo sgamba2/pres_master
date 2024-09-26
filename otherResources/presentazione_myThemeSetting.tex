@@ -1,0 +1,165 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Copyright 2022 by Isac Pasianotto
+%
+% This file may be distributed and/or modified
+%
+% 1. under the LaTeX Project Public License and/or
+% 2. under the GNU Public License.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% 	Variabili di tipo "color": 
+
+\definecolor{bluUnits100}{rgb}{0.16,0.22,0.36} 
+\definecolor{bluUnits80}{rgb}{0.22,0.3,0.51}
+\definecolor{bluUnits70}{rgb}{0.25,0.35,0.58}
+\definecolor{bluUnits50}{rgb}{0.41,0.51,0.74}
+\definecolor{bluUnits40}{rgb}{0.56,0.63,0.81}
+\definecolor{bluUnits25}{rgb}{0.78,0.82,0.9}
+\definecolor{bluUnits10}{rgb}{0.93,0.94,0.96}
+\definecolor{grey}{rgb}{0.3686, 0.5255, 0.6235} 
+\definecolor{coolblack}{rgb}{0.0, 0.18, 0.39}
+\definecolor{UBCblue}{rgb}{0.0, 0.18, 0.39} % UBC Blue (primary)
+\definecolor{UBCgrey}{rgb}{0.3686, 0.5255, 0.6235} % UBC Grey (secondary)
+%%	Palette di colori 
+
+\setbeamercolor{palette primary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette secondary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette tertiary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette quaternary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette light primary}{bg=bluUnits25,fg=bluUnits100}
+\setbeamercolor{palette titleframe}{bg=bluUnits10, fg=bluUnits80}
+
+\setbeamercolor{palette primary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette secondary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette tertiary}{bg=UBCblue,fg=white}
+\setbeamercolor{palette quaternary}{bg=UBCblue,fg=white}
+\setbeamercolor{author in sidebar}{fg=black!20!white}
+\setbeamercolor{title in sidebar}{fg=white}
+\setbeamercolor{section in sidebar}{fg=white}
+\setbeamercolor{structure}{fg=UBCblue} % itemize, enumerate, etc
+\setbeamercolor{sidebar}{bg=UBCblue,fg=white}
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%% Impostazioni generali slide  %%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%	Setta l'immagine da mettere come sfondo, riducendone l'opacità
+%\usebackgroundtemplate{\tikz\node[opacity=0.1]{\includegraphics[height=\frameheight]{\LogoFiligrana}};}
+
+%%	Elenchi puntati, numerati, etc.
+
+\setbeamercolor{structure}{fg=UBCblue}
+\setbeamertemplate{enumerate item}[circle]
+\setbeamertemplate{itemize subitem}[ball]
+% Valutare a secoda del contesto se sostituire con 
+% \setbeamertemplate{items}[circle]
+\setbeamercolor{alerted text}{fg=white}
+
+%% 	Colore delle scritte nella presentazione
+
+%\setbeamercolor{normal text}{fg=bluUnits100,bg=white}
+\setbeamercolor{normal text}{fg=UBCblue}
+
+%% 	Settaggio della linea in alto (headline)
+\setbeamertemplate{navigation symbols}{}
+
+
+%%	Settaggio riga in basso (footline) 
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+   \usebeamerfont{institute in head/foot}\insertshortinstitute
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{date in head/foot}%
+  \hspace*{12ex}
+    \usebeamerfont{date in head/foot}\insertshortdate\hspace*{12ex}
+    \insertframenumber{}/\inserttotalframenumber
+  \end{beamercolorbox}}%
+    
+  \vskip0pt%
+}
+%%	Settaggio tittoli delle slide  
+
+\setbeamertemplate{frametitle}{
+	\begin{beamercolorbox}[wd=\paperwidth,ht=2.75ex,dp=1ex,left]{palette titleframe}
+		\hspace*{2ex}\textbf{\insertframetitle}
+	\end{beamercolorbox}
+}
+
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%% Impostazioni Prima Slide  %%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	
+	
+	
+		
+\def\setTitlestyleDissertation{
+	
+	\defbeamertemplate*{title page}{customized}[1][]{
+		
+		%  Commentare il seguente ambiente {center} e decommentare {flushright} quello successivo in caso
+		%	si voglia usare solo il logo dell'UNI
+		
+		\begin{center}
+			\begin{multicols}{2}
+				\includegraphics[width=0.34\textwidth]{\LogoDipartimento}
+			\columnbreak
+				\includegraphics[width=0.28\textwidth]{\LogoUniversita}		
+			\end{multicols}
+		\end{center}
+	
+		%	\begin{flushright}
+		%		\includegraphics[width=0.45\textwidth]{\LogoUniversita}	
+		%	\end{flushright}
+	
+		\smallskip
+		
+		\begin{center}		
+			\usebeamerfont{title}\textbf{\inserttitle}\par
+			\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+			\bigskip		
+			
+			%% Il seguente layout dentro l'ambiente multicols serve per le tesi.
+			
+			\begin{multicols}{2}
+                    \begin{tabular}{c}
+					\usebeamerfont{normal text}{\candidatoLabel} \\
+					\usebeamerfont{author}{\insertauthor}
+				\end{tabular}
+    				\columnbreak
+				\begin{tabular}{c}
+					\usebeamerfont{normal text}{\relatoreLabel} \\
+					\usebeamerfont{author}{\relatore} \\
+					\usebeamerfont{author}{\correlatore}
+						
+				\end{tabular}					
+				
+			\end{multicols}
+		
+			\par
+			
+			\bigskip  	% --> nel caso di relatore e basta
+			%\smallskip 	% --> nel caso di relatore + correlatore
+			
+			%\insertinstitute\par
+			
+			%\bigskip	% --> nel caso di relatore e basta
+			%\smallskip	% --> nel caso di relatore + correlatore
+			
+			\usebeamerfont{date}\insertdate\par
+			
+			\bigskip	% --> nel caso di relatore e basta
+			%\smallskip	% --> nel caso di relatore + correlatore
+		\end{center}
+	}
+}

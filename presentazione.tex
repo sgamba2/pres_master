@@ -1,0 +1,2242 @@
+
+\documentclass{beamer}
+\usepackage{caption}
+\setbeamertemplate{bibliography item}{\insertbiblabel}
+
+% Caricamento di tutti i pacchetti necessari 
+\usepackage{otherResources/presentazione_allPackages}
+
+\definecolor{mygray}{gray}{0.6}
+
+
+% Settaggi documento %%
+        
+\hypersetup{
+    pdfauthor={Nome Cognome},
+    pdftitle={Titolo presentazione},
+    pdfsubject={Argomento presentazione}
+}
+\title[Titolo breve]{Commissioning of the Mu2e tracker DAQ,\\ \vspace{1mm}planning for the Vertical Slice Test\\\vspace{1mm}and pre-pattern recognition studies}
+%\subtitle{Il difficile ruolo delle navi della federazione ai confini della zona di spazio neutrale}
+\institute{Università di Pisa}
+\author[Sara Gamba]{\small{Sara Gamba}}
+\date[21/10/24]{\small{October 21$^{\text{st}}$ 2024}}
+
+\def\relatoreLabel{\small{\textbf{Supervisors}:}}
+\def\correlatore{\small{Simone Donati (Unipi, INFN Pisa)}}
+\def\relatore{\small{Pavel Murat (FNAL)}}
+
+%\def\correlatoreLabel{Correlatore}
+\def\candidatoLabel{\small{\textbf{Candidate}:}}
+\def\LogoUniversita{figures/png/mu2e_logo_1.png}
+\def\LogoDipartimento{otherResources/marchio_unipi_pant541.pdf}
+\def\LogoFiligrana{otherResources/449099668_885883553573194_8782856259596920363_n.jpg}
+
+%Applico tutte le personalizzazioni desiderate al tema: 
+\input{otherResources/presentazione_myThemeSetting.tex}
+
+% Inizio Presentazione
+
+\begin{document}
+	
+		%%%%%%%%%%%%%%%%%%%%%%%
+		%%  Slide 1: TITOLO  %%
+		%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\setTitlestyleDissertation
+\maketitle
+\end{frame}
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%%  Slide 2: <ArgomentoPrimaSlide> %%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Capitolo 1}
+\begin{frame}
+    \frametitle{Charged Lepton Flavour Violation}
+    \vspace{-2mm}
+\begin{columns}
+    \begin{column}{0.7\framewidth}
+        \begin{itemize}
+            \item The \textbf{Standard Model} (SM) does not predict lepton flavour violation;
+            \vspace{1mm}
+            \item The discovery of \textbf{neutrino oscillations} prove that lepton interactions are non-diagonal in flavour; \textcolor{white}{\cite{Bernstein_2013} \cite{Kargiantoulakis_2020} \cite{universe9010054}}
+            \vspace{1mm}
+            \item The SM fails to explain phenomena like neutrino masses and the consequent flavour oscillations;\textcolor{white}{\cite{clfv_signorelli} \cite{bartoszek2015mu2e} \cite{bobbb} \cite{kola}}
+            \vspace{1mm}
+            \item The branching ratios of \textbf{CLFV}
+            processes, including neutrino
+            oscillations, are suppressed by factors
+            proportional to ($\Delta m_\nu^2)^2 /M^4_W$ and expected to be less than $\mathcal{O}(10^{-50})$;
+            \vspace{1mm}
+            \item \textbf{This value is far beyond current experimental capabilities}.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.7\columnwidth]{figures/png/Screenshot_20240913_102556.png}
+        \end{figure} 
+        
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.7\columnwidth]{figures/jpg/1_erkKoywyuFzJmMv4PKpc9Q.jpg}
+        \end{figure} 
+    \end{column}
+\end{columns}
+\end{frame}
+
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		%%  Slide 3: <ArgomentoSecondaSlide>  %%
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Capitolo 2}
+\begin{frame}
+    \frametitle{Search for CLFV}
+                \vspace{-2mm}
+   \begin{columns}
+    \begin{column}{0.73\framewidth}
+        \begin{itemize}
+            \item New Physics (NP) models predict much \textbf{higher rates} of CLFV;
+            \vspace{1mm}
+            \item Observing CLFV would provide unambiguous evidence of \textbf{physics beyond the SM};
+            \vspace{1mm}
+            \item CLFV channels involving muons: $\mu^+ \rightarrow e^+ \gamma$, $\mu^- N \rightarrow e^- N$ and $\mu^+ \rightarrow e^+ e^+ e^-$;
+            \vspace{1mm}
+            \item $\mu^- N \rightarrow e^- N$ channel:
+            \begin{itemize}
+                \item Higher momentum signal and better separation from the background;
+                \item Benefits from high intensity beam;
+                \item Better sensitivity to CLFV in a large range of NP scenarios.
+            \end{itemize}
+            \item Current best limit on $\mu^- N \rightarrow e^- N$ by SINDRUM II: $R_{\mu e} < 7 \times 10^{-13}$ (90\% CL).
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[h]
+            \centering
+            \hspace*{-6ex}
+            \includegraphics[width=\columnwidth]{figures/png/Screenshot_20240912_093047.png}
+        \end{figure}  
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        %% Slide 4: <ArgomentoTerzaSlide> %%
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Capitolo 3}
+\begin{frame}
+    \frametitle{The Mu2e experiment}
+    \vspace{-3mm}
+\begin{columns}
+    \begin{column}{0.71\framewidth}
+        \begin{itemize}
+            \item Search for neutrinoless, coherent conversion $\mu^- N \rightarrow e^- N$ in the field of an Al nucleus, by measuring: 
+            $$R_{\mu e}=\frac{\mu^{-}+N(Z, A) \rightarrow e^{-}+N(Z, A)}{\mu^{-}+N(Z, A) \rightarrow \nu_\mu+N(Z-1, A)}$$
+            \item Mu2e goal is to improve SINDRUM II limit by 4 orders of magnitude;
+            \item The signal is a monochromatic conversion electron (CE) with energy: 
+            $$ E_{CE} = m_\mu - E_{recoil} - E_{bind} = 104.97 \ \text{MeV}$$
+            where $m_\mu$ is the muon mass, $E_{recoil}$ the target nucleus recoil energy and $E_{bind}$ the muonic atom $1s$ state binding energy.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\columnwidth]{figures/png/Screenshot_20240913_161505.png}
+        \end{figure} 
+                \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.75\columnwidth]{figures/png/Screenshot_20240913_160115.png}
+        \end{figure} 
+    \end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Background sources}
+            \vspace{-3mm} 
+
+         \begin{figure}[h]
+            \centering
+            \hspace*{-4ex}
+            \includegraphics[width=1.\framewidth]{figures/png/Screenshot_20240225_102708.png}
+        \end{figure}
+        \setlength{\leftmargini}{-0.5em}
+        \vspace{-3mm} 
+      
+    \begin{itemize}
+      {\small
+    \item \textbf{Cosmics} $\rightarrow$ veto enclosing the detector {\footnotesize($\approx$0.046 evs/RunI)};   
+\item \textbf{Intrinsic} $\rightarrow$ 1 MeV/c momentum resolution:
+\begin{itemize}
+ \item Decay In Orbit $\mu^- N \rightarrow e^- \bar{\nu}_e\nu_\mu N $ {\footnotesize($\approx$0.038 evs/RunI)};
+ \item Radiative Muon Capture $\mu^- N \rightarrow\gamma \nu_\mu N'^* $ {\footnotesize($<0.0024$ evs/RunI)}.
+\end{itemize}
+\item \textbf{Delayed processes from $\bar{p}$} $\rightarrow$ absorbers in the TS {\footnotesize($\approx0.010$ evs/RunI)};
+\item \textbf{Prompt processes} $\rightarrow$ pulsed beam + delayed
+live window:
+\begin{itemize}
+    \item Radiative Pion Capture $\pi^- N \rightarrow \gamma N' ^*$ {\footnotesize($\approx0.010$ evs/RunI)};
+ \item $\pi$ and $\mu$ Decay In Flight {\footnotesize($<2\times 10^{-3}$ evs/RunI)};
+ \item Beam electrons {\footnotesize($<1\times 10^{-3}$ evs/RunI)}.
+     \end{itemize}
+       }
+      \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Mu2e experimental setup}
+    \vspace{-7mm}
+     \begin{figure}[h]
+            \centering
+            \hspace*{-4ex}
+            \includegraphics[width=1.1\framewidth, height=3.5cm ]{figures/png/Screenshot_20240913_162936.png}
+        \end{figure}
+                \setlength{\leftmargini}{-0.5em}
+\vspace{-2mm}
+        \begin{itemize}
+        
+            \item \textbf{Production Solenoid}:
+            \begin{itemize}
+                \item 8 GeV pulsed proton beam interacts with the W target and mostly $\pi$s are produced;
+                \item graded field for backward collection.
+            \end{itemize}
+            \item \textbf{Transport Solenoid}:
+            \begin{itemize}
+                \item it allows for $\pi$ decay and $\mu$ transport;
+                \item $S$-shape for charged particle selection;
+                \item it selects muons with $p \lesssim 100 $ MeV/c;
+                \item rotating collimator COL3 selects $\mu^-$ or $\mu^+$ beam.
+            \end{itemize}
+\item \textbf{Detector Solenoid}: Stopping Target, $p$ absorber and detectors.
+        \end{itemize}
+\end{frame}
+\begin{frame}
+    \frametitle{The electromagnetic calorimeter}
+    \begin{columns}
+            \begin{column}{0.65\framewidth}
+      Calorimeter is vital for:
+      \begin{itemize}
+          \item \textbf{PID} ($E/p$);
+          \item Seed for \textbf{track reconstruction};
+          \item Fast online \textbf{trigger} filter.
+      \end{itemize}
+      \textbf{Design}:
+      \begin{itemize}
+        \item 2 hollow disks of crystals, 70 cm apart;
+          \item 2 $\times$ 674 CsI crystals per disk, each coupled to 2 SiPMs.
+      \end{itemize}
+      \textbf{Performance}:
+      \begin{itemize}
+          \item $\sigma_E/E \sim$ 10\%;
+          \item $\sigma_{xy}\sim$ 6 mm;
+          \item $\Delta t < 500$ ps.
+      \end{itemize}
+               \end{column}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[h]
+            \centering
+            \includegraphics[width=\columnwidth ]{figures/png/Screenshot_20240322_121000.png}
+        \end{figure}
+              \begin{figure}[h]
+            \centering
+            \includegraphics[width=\columnwidth ]{figures/png/Screenshot_20240706_151533.png}
+        \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The straw tracker}
+    \begin{columns}
+    \begin{column}{0.65 \framewidth}
+\textbf{Purpose}:
+\begin{itemize}
+\item momentum measurement with $\Delta p<300$ keV/c FWHM + 950 keV/c energy losses (ST and proton absorber) (DIO). 
+\end{itemize}
+\textbf{Design}:
+\begin{itemize}
+    \item 3 m downstream of the ST (B$\sim$1 T);
+    \item hollow geometry (low $p_T $ particles);
+    \item 3 m long tracker in vacuum;
+    \item 96 straws per panel, 6 panels per plane, 2 planes per station;
+        \item 18 tracking stations: 216 panels;
+    \item 5 mm diameter and 40-110 cm long straws filled with a 80\%:20\% Ar:CO$_2$ mixture at a pressure of 1 atm.
+       
+        
+        
+    \end{itemize}
+    
+    \end{column}
+    \begin{column}{0.5 \framewidth}
+    \vspace{-10mm}
+      \begin{figure}[H]
+          \centering
+\includegraphics[width=0.8\columnwidth]{figures/png/Screenshot_20240306_222803.png}
+          \label{fig:enter-label} 
+      \end{figure}
+     \begin{figure}[H]
+          \centering
+            \includegraphics[width=0.8\columnwidth]{figures/png/Screenshot_20240706_163056.png}
+          \label{fig:enter-label} 
+      \end{figure}
+    \end{column}
+    \end{columns}
+    \end{frame}
+\begin{frame}
+    \frametitle{The tracker readout and DAQ}
+    \vspace{-6mm}
+    \begin{columns}
+         \begin{column}{0.6\framewidth}
+         \setlength{\leftmargini}{1em}
+         \begin{itemize}
+         {\small
+         \item Signal is readout from both ends by  \textbf{preamps} (\textbf{CAL} and \textbf{HV} side);
+         \item Analog signals are sent to the \textbf{DRAC} {\footnotesize(Digitizer Readout \& Assembler Controller)} and processed by 2 \textbf{TDC}s and one \textbf{ADC};
+        \item The 2 digi-FPGA create one data packet for each hit containing the \textbf{two hit times} and \textbf{one waveform};
+        \item Data packets are transferred to the \textbf{ROC} {\footnotesize(Readout Controller)};
+        \item ROC collects, buffer and transfer data from digi-FPGAs to \textbf{DTC} {\footnotesize(Data Transfer Controller)} installed on \textbf{DAQ} computers;
+        \item DTC sends data request to the ROC and data from DTC is sent to the Event Builder.}
+         \end{itemize}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+           \begin{figure}[h]
+          \centering
+                    \hspace*{-1.2em}
+            \includegraphics[width=1.1\columnwidth]{figures/png/Screenshot_20240919_110354.png}
+          \label{fig:enter-label} 
+      \end{figure} 
+           \begin{figure}[h]
+          \centering
+          \vspace{-10mm}
+            \includegraphics[width=1.02\columnwidth]{figures/png/Screenshot_20240529_133230.png}
+          \label{fig:enter-label} 
+      \end{figure} 
+    \end{column}
+    \end{columns}
+
+\end{frame}
+\begin{frame}
+    \frametitle{My Thesis}
+    
+\begin{columns}
+   \begin{column}{1.15\framewidth} 
+         \setlength{\leftmargini}{1.3em}
+\vspace{-4mm}
+\begin{itemize}
+\item Mu2e is starting detector \textbf{commissioning} and \textbf{calibration};
+     \vspace{2mm}
+\item My work consists of a \textbf{comprehensive study of the Mu2e tracker}:
+\vspace{1.8mm}
+  \begin{itemize}
+    \item \textbf{Vertical Slice Test} (VST). The entire 
+testing chain, from the straws to the readout, to processed data on disk:
+     \vspace{1mm}
+ \begin{itemize}
+     \item initial tracker \textbf{DAQ} and \textbf{FEE} testing;
+          \vspace{1mm}
+     \item validation of the \textbf{ROC} readout and buffering;
+          \vspace{1mm}
+     \item study of tracker \textbf{preamps} performance.
+     \end{itemize}
+     \vspace{1.8mm}
+
+    \item First steps towards the tracker timing \textbf{calibration} with \textbf{cosmics}:
+         \vspace{1mm}
+    \begin{itemize}
+            \item determine \textbf{signal propagation} and \textbf{channel-to-channel delay};
+                 \vspace{1mm}
+            \item develop an \textbf{unbiased cosmic track reconstruction} procedure.
+    \end{itemize}
+         \vspace{1.8mm}
+
+    \item \textbf{Mu2e Offline}. Pre-pattern recognition studies:
+         \vspace{1mm}
+    \begin{itemize}
+        \item estimated data volume for Mu2e data-taking 
+is >\textbf{7 PBytes/year};
+     \vspace{1mm}
+\item the \textbf{primary source} of hits in the 
+Mu2e tracker will be $\delta$-electrons;
+     \vspace{1mm}
+\item important to identify those hits without losing \textbf{CE efficiency}.
+    \end{itemize}
+        \end{itemize}
+\end{itemize}
+ \end{column}
+ \end{columns}
+     
+
+\end{frame}
+\begin{frame}
+    \frametitle{Outline}
+    
+\begin{itemize}
+\item Commissioning of the tracker DAQ and FEE:
+\begin{itemize}
+         \vspace{2mm}
+
+    \item validation of ROC readout;
+             \vspace{1.5mm}
+
+    \item \textcolor{mygray}{study of preamplifiers performance}.
+\end{itemize}
+\vspace{4mm}
+    \item \textcolor{mygray}{First steps towards the station calibration;}
+    \vspace{6mm}
+
+    \item \textcolor{mygray}{Pre-pattern recognition studies;}
+   \vspace{6mm}
+
+    \item \textcolor{mygray}{Conclusions.}
+\end{itemize}
+\end{frame}
+
+ \begin{frame}{Description of test stand setup}
+ \vspace{-3mm}
+\begin{columns}
+    \begin{column}{0.69\framewidth}
+             \setlength{\leftmargini}{1.3em}
+      \begin{itemize}
+      \item \textbf{ROC readout validation};
+      \vspace{1mm}
+          \item \textbf{TS1 tracker test stand}: one DTC connected to the DAQ computer, one ROC (one tracker panel-96 channels);
+             \vspace{1mm}
+          \item ROC can be operated in two different data readout modes:
+          \begin{itemize}
+              \item MODE 1: emulated data readout mode;
+              \item \textbf{MODE 2}: digi-FPGA readout mode.
+          \end{itemize}
+             \vspace{1mm}
+          \item digi-FPGAs pulsed by their \textbf{internal pulser} at $f_{gen}$= 250 kHz or 60 kHz;
+             \vspace{1mm}
+          \item \textbf{Event Window} ($T_{EW}$): the time interval between two proton pulses, varied between 700 ns to 50 $\mu$s;
+             \vspace{1mm}
+          \item The ROC firmware has an internal \textbf{hit buffer} which stores up to \textbf{255 hits}.
+
+      \end{itemize}
+          \end{column}
+\begin{column}{0.45\framewidth}
+        \begin{figure}[h]
+          \centering
+            \includegraphics[width=0.8\columnwidth]{figures/png/Screenshot_20240712_102528.png}
+          \label{fig:enter-label} 
+      \end{figure} 
+\end{column}
+\end{columns}
+
+          \end{frame}
+
+
+
+
+\begin{frame}{Logic of data taking}
+\begin{columns}
+   \begin{column}{1.15\framewidth} 
+         \setlength{\leftmargini}{1.3em}
+         \vspace{-3mm}
+        \begin{itemize}
+         \item Depending on $T_{gen}=1/f_{gen}$ and $T_{EW}$, the data taking can proceed in two different modes:
+  \begin{itemize}
+  \item $N_{gen}\geq255$: $N_{readout}=255$;
+    \item $N_{gen}<255$: $N_{readout}<255$;
+  \end{itemize}
+      \item Each FPGA has its own generator and pulses from different generators are offset ($\in [0 ,T_{gen}]$) with respect to each other;
+      \item Timing of generator pulses uncorrelated with the beginning of the EW $\rightarrow$ different number of hits in an EW;
+      \item Offsets between channels (same digi-FPGA) are about few ns and can be measured;
+      \item Channel readout sequence is fixed.
+  \end{itemize}
+  \vspace{-4mm}
+              \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.8 \framewidth]{figures/png/finalimg.png}
+          \label{fig:enter-label} 
+      \end{figure}
+   \end{column}
+   \end{columns}
+    \end{frame}
+
+
+    \begin{frame}{Monte Carlo simulation}
+                 \vspace{-3mm}
+    \begin{columns}
+  \begin{column}{0.65\framewidth} 
+        \begin{itemize}
+        {\small
+            \item ROC readout logic emulated with a bit-level C++ simulation;
+            \item Simulated parameters:
+            \begin{itemize}
+                \item number of hits in each channel;
+                \item number of readout hits per event.
+            \end{itemize}
+            \item digi-FPGAs and channel to channel offsets considered. }
+        \end{itemize}
+       {\small  \textbf{Steps of the simulation:}}
+\begin{itemize}
+ {\small
+\item EW starts at $t=0$ s;
+  \item The 1st pulse is generated $T_0\in [0 ,T_{gen}]$;
+    \item Next pulses: $T_i = T_{i-1} + T_{gen}$, until $T_i> T_{EW}$;
+\item Pulses are generated in each channel following the readout sequence;
+  \item The procedure \textit{continues} until all hits 
+  have been $readout$, or $N_{hits}>255$. }
+\end{itemize}
+    \end{column}
+     \begin{column}{0.5\framewidth} 
+      \begin{figure}[H]
+          \centering
+      \includegraphics[width=\columnwidth]{figures/png/Screenshot from 2023-12-03 11-50-50.png}
+      \label{fig:delay1}
+    \end{figure}
+    \begin{figure}[H]
+          \centering
+      \includegraphics[width=\columnwidth]{figures/png/Screenshot from 2023-12-03 11-50-33.png}
+
+      \label{fig:delay2}
+    \end{figure}
+       \end{column}
+      
+   \end{columns}
+    \end{frame}
+
+
+\begin{frame}{Hit timing distribution: overflow mode}
+\vspace{-4mm}
+\begin{columns}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[H]
+          \centering
+          \hspace*{-2em}
+        \includegraphics[width=1.\columnwidth]{figures/pdf/figure_00007_timedistr_roc_simulation_ch0_281.pdf}
+          \label{fig:enter-label} 
+          \end{figure}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[H]
+          \centering
+                    \hspace*{-1em}
+        \includegraphics[width=1.\columnwidth]{figures/pdf/figure_00003_timedistr_roc_simulation_ch2_281.pdf}
+          \label{fig:enter-label} 
+          \end{figure} 
+    \end{column}
+\end{columns}
+ \begin{columns}
+    \begin{column}{1.15\framewidth}
+    \vspace{0mm}
+
+     \begin{itemize}
+    
+     \item The distribution of the hit time for channel 0 of digi-FPGA-1 (Left) and channel 2 of digi-FPGA-2 (Right);
+     \item $T_{EW}$ = 50 $\mu$s and $f_{gen}$ = 60 kHz;
+     \item Left distribution is uniform, Right one is non-trivial;
+     \item Different behaviour for different channels in different FPGAs;
+        \item Apparently there are interruptions of channel 2 in the second FPGA;
+        \item Everything can be explained with the $occupancy$ plot.
+    \end{itemize}
+         \end{column}
+\end{columns}   
+\end{frame}
+\begin{frame}{Hit timing distribution: regular mode}
+\vspace{-10mm}
+\begin{columns}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[H]
+          \centering
+          \hspace*{-2em}
+        \includegraphics[width=1.2\columnwidth]{figures/pdf/figure_00001_timedistr_roc_simulation_10538.pdf}
+          \label{fig:enter-label} 
+          \end{figure}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[H]
+          \centering
+                    \hspace*{-1em}
+        \includegraphics[width=1.2\columnwidth]{figures/pdf/figure_00012_timedistr_roc_simulation_ch2_105038.pdf}
+          \label{fig:enter-label} 
+          \end{figure} 
+   \end{column}
+\end{columns}
+ \begin{columns}
+    \begin{column}{1.15\framewidth}
+     \begin{itemize}
+      \item The distribution of the hit time for channel 0 of digi-FPGA-1 (Left) and channel 2 of digi-FPGA-2 (Right);
+          \item $T_{EW}$ = 25 $\mu$s and $f_{gen}$ = 60 kHz;
+        \item Same behaviour for different channels in different FPGAs;
+        \item No interruptions of channel 2 in the second FPGA.    \end{itemize}
+             \end{column}
+\end{columns}     
+         
+\end{frame}
+
+
+
+\begin{frame}{$Occupancy$ plots}
+\vspace{-4.4mm}
+\begin{columns}
+    \begin{column}{0.5 \framewidth}
+    \begin{figure}[H]
+          \centering
+          \hspace*{-2em}
+        \includegraphics[width=1.1\columnwidth]{figures/pdf/figure_00004_nhitsvschannel_roc_simulation_281.pdf}
+          \label{fig:dfjkdsfh} 
+\end{figure}    
+    \end{column}
+    \begin{column}{0.5 \framewidth}
+           \begin{figure}[H]
+          \centering
+          \hspace*{-2em}
+        \includegraphics[width=1.1\columnwidth]{figures/pdf/figure_00002_nhitsvschannel_roc_simulation_2.pdf}
+          \label{fig:dfjkdsfh} 
+\end{figure} 
+    \end{column}
+\end{columns}      
+\vspace{-3.6mm}
+ \begin{columns}
+    \begin{column}{1.17\framewidth}
+     \begin{itemize}
+     {\small
+      \item $Occupancy$ plot: number of hits versus channel number (data red, MC blue);
+      \item The bin ordering corresponds to the channel readout ordering;
+    \item Overflow mode (Left):  }
+    \begin{itemize}
+    {\small
+        \item channels 0-68: 48 digi-FPGA-1 channels with 4 hits (192 hits) and 21 digi-FPGA-2 channels with 3 hits (63 hits);
+        \item channels 0-75: 48 digi-FPGA-1 channels with 3 hits (144 hits) and 27 digi-FPGA-2 channels with 4 hits (108 hits) and 1 with 3 hits (111 hits);
+        \item channels 0-85: 48 digi-FPGA-1 channels with 3 hits (144 hits) and 37 digi-FPGA-2 channels with 3 hits (111 hits).}
+    \end{itemize}
+    \item  {\small Regular mode (Right): all channels with same occupancy ($N_{hits}<255$).
+    }
+   
+        \end{itemize}
+             \end{column}
+\end{columns}     
+\end{frame}
+
+
+\begin{frame}{Number of hits distribution}
+\vspace{-10mm}
+\begin{columns}
+    \begin{column}{0.5\framewidth}
+    \hspace{-30mm}
+        \begin{figure}[H]
+          \centering
+          \hspace*{-2em}
+        \includegraphics[width=1.2\columnwidth]{figures/pdf/figure_00008_nhits_281.pdf}
+          \label{fig:ov} 
+          \end{figure}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[H]
+          \centering
+          \hspace*{-1em}
+        \includegraphics[width=1.2\columnwidth]{figures/pdf/figure_00009_nhits_105038.pdf}
+          \label{fig:un} 
+          \end{figure} 
+    \end{column}
+\end{columns}
+ \vspace{-3mm}
+ \begin{columns}
+    \begin{column}{1.15\framewidth}
+     \begin{itemize}
+        \item Overflow mode (Left): distribution of number of hits peaked in 255; 
+        \item Regular mode (Right): the number of hits  distribution depends on the relative offset of the EW  with respect to the digi-FPGA pulsers and it varies from 
+144 to 192;
+            \item Agreement between MC and data at a level of $10^{-3}$.
+
+    \end{itemize}  
+    \end{column}
+    \end{columns}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Outline}
+    
+\begin{itemize}
+\item Commissioning of the tracker DAQ and FEE:
+\begin{itemize}
+         \vspace{2mm}
+
+    \item \textcolor{mygray}{validation of ROC readout;}
+             \vspace{1.5mm}
+
+    \item study of preamplifiers performance.
+\end{itemize}
+\vspace{4mm}
+    \item \textcolor{mygray}{First steps towards the station calibration;}
+    \vspace{6mm}
+
+    \item \textcolor{mygray}{Pre-pattern recognition studies;}
+    \vspace{6mm}
+
+    \item \textcolor{mygray}{Conclusions.}
+\end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Test 1: channel occupancy versus channel ID}
+\vspace{-3mm}
+\begin{columns}
+\begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.1em}
+ \begin{itemize}
+ {\small
+     \item Same test stand: 1 or 2 ROCs and one DTC, plus preamps on the CAL side;
+     \item CAL side digi-FPGA generates calibration pulses, pulsing every 8th channel across 12 RUNs (different starting channel);
+          \item The frequency was set to 50 kHz and  $T_{EW}=$50 $\mu$s, 2 or 3 hits per channel;
+     \item Looking for cross talks, non-uniform occupancy, dead channels.
+   }
+ \end{itemize}
+ \end{column}
+  \end{columns}
+    \vspace{-2mm}
+   \begin{columns}
+ \begin{column}{0.5\framewidth}
+     \begin{figure}[!h]
+      \centering
+      \includegraphics[width=\columnwidth]{figures/pdf/run105421_nh_vs_ch.pdf}
+     \label{fig:normalhits}
+\end{figure}
+ \begin{itemize}
+ \end{itemize}
+ \end{column}
+  \begin{column}{0.5\framewidth}
+     \begin{figure}[!h]
+      \centering
+      \vspace{-3mm}
+      \includegraphics[width=\columnwidth]{figures/pdf/run105346_nh_vs_ch.pdf}
+     \label{fig:normalhits}
+\end{figure}
+ \end{column}
+\end{columns}
+ \vspace{-10mm}
+ \begin{columns}
+ \begin{column}{1.15\framewidth}
+     \setlength{\leftmargini}{1.1em}
+ \begin{itemize}
+ \item (Left): regular occupancy;
+    \item (Right): 94th channel dead (preamp substituted) and $N_{hits}>3$ in some channels $\rightarrow$ time distribution and inverted waveforms in Test 2.
+    \end{itemize}
+     \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Test 1: channel occupancy versus channel ID}
+\vspace{-4mm}
+\begin{columns}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-2em}
+      \includegraphics[width=1.1\columnwidth]{figures/pdf/run105420_nh_vs_ch.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\begin{column}{0.5\framewidth}
+      \begin{figure}[!h]
+      \centering
+            \hspace*{-1em}
+\includegraphics[angle=90,width=1.1\columnwidth]{figures/jpg/photo_6028424923279639562_y.jpg}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\begin{columns}
+\begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+ \begin{itemize}
+  \item (Left): occupancy plot with cross talks in first odd channels and only asymmetric (e.g. 3$\rightarrow$5, not seen 3$\rightarrow$1); 
+\item (Right): preamp boards are mounted vertically and odd channels are those on the PCB board;
+\item The distance between the first channels is slightly lower;
+\item The solution to these cross talks is still object of study.
+ \end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Test 2: analysis of the readout pulses waveforms}
+    \vspace{-3mm}
+    \begin{columns}
+\begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+ \begin{itemize}
+ {\small
+ \item Same test stand;
+  \item Checking signal uniformity among channels within the same ROC or across multiple ROCs, and among different events;
+  \item 40 MHz ADC (25 ns sample width) and pulser frequency set to 50 kHz.}
+  \end{itemize}
+    \end{column}
+    \end{columns}
+    \vspace{-2mm}
+    \begin{columns}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-2em}
+      \includegraphics[width=1.\columnwidth]{figures/pdf/wf_ch50_0.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\begin{column}{0.5\framewidth}
+      \begin{figure}[!h]
+      \centering
+            \hspace*{-1em}
+\includegraphics[width=1.\columnwidth]{figures/png/baseline_ch00.png}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\vspace{-2mm}
+    \begin{columns}
+\begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+ \begin{itemize}
+ {\small
+ \item (Left): regular waveform;
+\item Flat distribution in the first 10 samples (baseline), high positive charge peak with a sharp leading edge, negative tail;
+\item (Right): fitted baseline distibution, with mean at 210 ADC counts and FWHM$=2 \sqrt{2 \text{ln}2}\sigma\sim$4.5 ADC counts. }
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+ 
+\begin{frame}
+    \frametitle{Test 2: analysis of the readout pulses waveforms}
+    \vspace{-4mm}
+    \begin{columns}
+\begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+ \begin{itemize}
+{\small \item Different baseline values indicating noise, dips, inverted waveforms.}
+  \end{itemize}
+    \end{column}
+    \end{columns}
+        \vspace{-3mm}
+    \begin{columns}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-2em}
+      \includegraphics[width=\columnwidth]{figures/pdf/wf_ch58_1.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\begin{column}{0.5\framewidth}
+      \begin{figure}[!h]
+      \centering
+            \hspace*{-1em}
+\includegraphics[width=\columnwidth]{figures/pdf/wf_ch50_1.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\vspace{-1.5mm}
+    \begin{columns}
+    \begin{column}{0.63\framewidth}
+        \setlength{\leftmargini}{1.1em}
+      \begin{itemize}
+ {\small
+ \item (Left): dips of specific depths (64, 128 or 192) $\rightarrow$ ADC 6th or 7th bits;
+\item Problematic samples identified and excluded from the baseline estimate;
+\item (Right): inverted waveform $\rightarrow \Delta t $ distribution peaked in 16 $\mu$s (regular) and 4 $\mu$s (inverted). Trigger on trailing edge of 4 $\mu$s long input pulses.}
+
+\end{itemize}
+\end{column}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-2em}
+      \includegraphics[width=\columnwidth]{figures/png/deltathits.png}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Test 2: analysis of the readout pulses waveforms}
+    \vspace{-4mm}
+    \begin{columns}
+\begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+ \begin{itemize}
+{\small \item (Left): pulse height (PH) (charge) distribution with 2/3 peaks.}
+  \end{itemize}
+    \end{column}
+    \end{columns}
+        \vspace{-3mm}
+    \begin{columns}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-2em}
+      \includegraphics[width=0.9\columnwidth]{figures/pdf/pulseheight.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\begin{column}{0.5\framewidth}
+      \begin{figure}[!h]
+      \centering
+            \hspace*{-1em}
+\includegraphics[width=0.9\columnwidth]{figures/pdf/tmean1.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\vspace{-5mm}
+    \begin{columns}
+    \begin{column}{0.55\framewidth}
+        \setlength{\leftmargini}{1.em}
+        \vspace{-2mm}
+      \begin{itemize}
+ {\small
+\item (Top Right): $s_{mean} = \frac{\sum_i \text{sample}_i \cdot q_i }{\sum_i q_i} $ distribution, correlated with PH (charge) peaks;
+\item (Bottom Right): simulation of the charge and PH distribution behaviour;
+\item This is an artifact of the pulser 
+timing shifted with respect to the ADC 
+clock of few ns.}
+
+\end{itemize}
+\end{column}
+\begin{column}{0.55\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-2em}
+      \includegraphics[width=1.1\columnwidth]{figures/png/pres.png}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Test 2: analysis of the readout pulses waveforms}
+        \vspace{-4mm}
+    \begin{columns}
+\begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+ \begin{itemize}
+{\small \item Charge distribution used to check noisy channels (Left) and glitches (Right).}
+  \end{itemize}
+    \end{column}
+    \end{columns}
+
+     \vspace{-3mm}
+    \begin{columns}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-1em}
+    \includegraphics[width=0.95\columnwidth]{figures/pdf/noise.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\begin{column}{0.5\framewidth}
+      \begin{figure}[!h]
+      \centering
+            \hspace*{-1em}
+\includegraphics[width=0.95\columnwidth]{figures/pdf/glitch.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\vspace{-3mm}
+    \begin{columns}
+    \begin{column}{1.15\framewidth}
+        \setlength{\leftmargini}{1.em}
+      \begin{itemize}
+ {\small
+\item Check of the response uniformity
+across channels.}
+\end{itemize}
+\end{column}
+\end{columns}
+\vspace{-3mm}
+\begin{columns}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-1em}
+      \includegraphics[width=1.\columnwidth]{figures/pdf/q_vs_ch1.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-1em}
+      \includegraphics[width=1.\columnwidth]{figures/pdf/ph_vs_ch1.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Outline}
+    
+\begin{itemize}
+\item \textcolor{mygray}{Commissioning of the tracker DAQ and FEE:}
+\begin{itemize}
+         \vspace{2mm}
+
+    \item \textcolor{mygray}{validation of ROC readout;}
+             \vspace{1.5mm}
+
+    \item \textcolor{mygray}{study of preamplifiers performance}.
+\end{itemize}
+\vspace{4mm}
+    \item First steps towards the station calibration;
+    \vspace{6mm}
+
+    \item \textcolor{mygray}{Pre-pattern recognition studies;}
+  \vspace{6mm}
+    \item \textcolor{mygray}{Conclusions.}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{First steps towards the station calibration}
+    \vspace{-3mm}
+    \begin{columns}
+        \begin{column}{1.15\framewidth}
+                        \setlength{\leftmargini}{1.2em}
+            \begin{itemize}
+                {\small    
+             \item \textbf{Calibration goal}: straw longitudinal position resolution $\lesssim$4 cm;}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+        \vspace{-1.5mm}
+    \begin{columns}
+        \begin{column}{0.65\framewidth}
+                \setlength{\leftmargini}{1.2em}
+            \begin{itemize}
+             {\small 
+             \item TDCs measure arrival times $t_1$ and $t_2$;
+
+                \item $v$: \textbf{signal propagation velocity};
+    \item $x_{\text{track}}$: \textbf{reconstructed track position along the wire};
+    
+                \item $t_0$ particle crossing, $t_d$ drift time, $L$ straw length, $d_i$ delays by FEE;
+                                          
+                }   
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\framewidth}
+            \begin{equation*}
+\begin{aligned}
+    t_1 &= t_0 + \frac{x_{\text{track}}}{v} + t_d + d_1 \\
+    t_2 &= t_0 + \frac{L - x_{\text{track}}}{v} + t_d + d_2 \\
+    \Delta & t_{12} = \frac{2x_{\text{track}}-L}{v} +(d_1-d_2)
+\end{aligned}
+\end{equation*}
+\vspace{-3mm}
+        \end{column}
+    \end{columns}
+    \vspace{-1.5mm}
+    \begin{columns}
+        \begin{column}{1.16\framewidth}
+                        \setlength{\leftmargini}{1.28em}
+            \begin{itemize}
+               {\small 
+                \item \textbf{Calibration}: $v$ from $\Delta t_{12}$ (TDCs) correlated with $x_{\text{track}}$ (\textbf{unbiased});
+                \vspace{-0.5mm}
+               \item $x_{track}$ determined by straw \textbf{"yes or no"} information $\rightarrow$ \textbf{station geometry}.}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+    \begin{columns}
+        \begin{column}{0.5 \framewidth}
+         \vspace{-3mm}
+            \begin{figure}[!h]
+    \centering
+    \includegraphics[width =0.8\columnwidth]{figures/png/gassystem.png}
+    \label{fig:gassystem}
+\end{figure}
+        \end{column}
+        \begin{column}{0.65 \framewidth}
+        \vspace{-0.5mm}
+                                \setlength{\leftmargini}{0.3em}
+            \begin{itemize}
+               {\small 
+               \item First calibration with \textbf{cosmics};
+               \vspace{-0.5mm}
+               \item Unbiased reconstruction with $horizontal$ $orientation$; 
+                              \vspace{-0.5mm}
+               \item \textbf{Operational constraints}: gas system (sealing with vertical valves), space, fragility. Designed to be operated \textbf{vertically};
+                 \vspace{-0.5mm}
+               \item \textbf{Simulation with vertical station to assess biases and feasibility}.}
+            \end{itemize}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Muon selection and reconstruction}
+\vspace{-4.6mm}
+    \begin{columns}
+\begin{column}{0.65\framewidth}
+   \setlength{\leftmargini}{1.2em}
+      \begin{itemize}
+      {\small \item \textbf{Cosmics as calibration source}:}
+      \vspace{-1mm}
+      \begin{itemize}
+    {\small \item standard detector operations;
+    \item flux is $\sim 1 \ \text{cm}^{-2} \text{min}^{-1}$ 
+    (for horizontal detectors) and $E_{mean}\sim$ GeV;
+    \item MIP;
+    \item $v_{\mu}\sim c \rightarrow$ align channel offsets.}
+\end{itemize}
+{\small \item \textbf{Straw information}:}
+\vspace{-1mm}
+\begin{itemize}
+    {\small \item the direction $(D_{x,i},D_{y,i})$;
+    \item the midpoint $(M_{x,i},M_{y,i})$;
+    \item the $z_i$ coordinate.}
+\end{itemize} 
+ {\small
+ \item \textbf{Selection}:}
+ \vspace{-1mm}
+  \begin{itemize}
+   {\small \item  Hits in \textbf{one vertical station};
+    \item \textbf{Straight line in 3D}: $\geq$4 hits at different $z$ $\rightarrow$ $nhits_{face_i}\geq 1$;
+    \item \textbf{Resolution}: $nhits_{panel_i}\leq 3$.}
+    \end{itemize} 
+ {\small \item \textbf{Reconstruction}: }
+ \vspace{-1mm}
+        \begin{itemize}
+        {\small \item $StrawHit$s $\rightarrow$ 1 $ClusterHit$ (face);
+          \item 2 $ClusterHit$s $\rightarrow$ $StereoHit$  (plane);
+          \item 2 $StereoHit$s $\rightarrow$ reconstructed track.}
+        \end{itemize}
+
+\end{itemize}
+\end{column}
+\begin{column}{0.5\framewidth}
+      \begin{figure}[!h]
+      \centering
+            \hspace*{-2em}
+\includegraphics[width=0.7\columnwidth]{figures/png/Screenshot_20240526_164527.png}
+     \label{fig:normalhits}
+\end{figure}
+\vspace{-5mm}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-2em}
+      \includegraphics[width=0.9\columnwidth]{figures/png/Screenshot_20240810_210144.png}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Panel illumination pattern and muon directions}
+    \begin{columns}
+\begin{column}{0.65\framewidth}
+\vspace{-8mm}
+   \setlength{\leftmargini}{1.2em}
+      \begin{itemize}
+ {\small
+ \item Precise calibration: uniformly distributed hits across the panel;
+ \vspace{1.6mm}
+\item (Top): muon selections bring to \textbf{non uniform} and spotty panel illumination;
+ \vspace{1.6mm}
+\item 4/4 overlap areas limited to \textbf{panel edges};
+ \vspace{1.6mm}
+\item \textbf{Waveform non-linearities};
+ \vspace{1.6mm}
+\item Selection of \textbf{specific
+muon directions};
+ \vspace{1.6mm}
+\item (Bottom): $m_{yz}=\Delta y /\Delta z$ distribution;
+ \vspace{1.6mm}
+\item No particles with $m_{yz}\sim 0$ (horizontal) and $m_{yz} \rightarrow \infty$ (vertical);
+ \vspace{1.6mm}
+\item Mostly with $|m_{yz}| \sim 1$ (\textbf{45° angle});
+ \vspace{1.6mm}
+\item Muon \textbf{rate} scaled by $1/\cos^2\theta \sim 1/2$ (45° flux) and $1/\sqrt{2}$ (cosmics striking at 45°).}
+
+\end{itemize}
+\end{column}
+\begin{column}{0.5\framewidth}
+\vspace{-2mm}
+      \begin{figure}[!h]
+      \centering
+\includegraphics[width=1.\columnwidth]{figures/pdf/xp_vs_yp_panel0.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\vspace{-5mm}
+         \begin{figure}[!h]
+      \centering
+      \includegraphics[width=1.\columnwidth]{figures/pdf/myz.pdf}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{Longitudinal position reconstruction}
+
+    \begin{columns}
+\begin{column}{0.65\framewidth}
+\vspace{-6mm}
+   \setlength{\leftmargini}{1.2em}
+      \begin{itemize}
+ {\small
+ \item (Top): \textbf{longitudinal reconstructed position} $x_{track}$ (panel frame);
+  \vspace{1.2mm}
+ \item $x_{track}$: intersection of the reconstructed track with the mean $z_i$ of the panel;
+   \vspace{1.2mm}
+ \item  \textbf{Bumps} $\rightarrow$ 4/4 requirement consequence;
+   \vspace{1.2mm}
+\item Different bumps $\rightarrow$ different straws;
+  \vspace{1.2mm}
+\item (Bottom): longitudinal reconstructed position \textbf{bias} (panel frame);
+  \vspace{1.2mm}
+ \item $\Delta x = x_{track}-x_{true}$;
+   \vspace{1.2mm}
+ \item $x_{true}$: MC panel hits mean coordinate;
+   \vspace{1.2mm}
+\item The bias ranges between [-6,6] cm;
+  \vspace{1.2mm}
+\item Similar distributions for all panels;
+  \vspace{1.2mm}
+\item Different straws with different bias; 
+  \vspace{1.2mm}
+\item $m_{yz}=\frac{\Delta y}{\Delta z}$ not accurately reconstructed.}
+
+\end{itemize}
+\end{column}
+\begin{column}{0.5\framewidth}
+\vspace{-3mm}
+      \begin{figure}[!h]
+      \centering
+\includegraphics[width=1.\columnwidth]{figures/png/x_panel0.png}
+     \label{fig:normalhits}
+\end{figure}
+\vspace{-5mm}
+         \begin{figure}[!h]
+      \centering
+      \includegraphics[width=1.\columnwidth]{figures/png/panel_00_x_bias.png}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{Results}
+
+    \begin{columns}
+\begin{column}{0.65\framewidth}
+\vspace{-8mm}
+   \setlength{\leftmargini}{1.2em}
+      \begin{itemize}
+ {\small
+    \item (Top): 2D distribution of $\Delta x$ vs $x_{true}$;
+    \vspace{1.6mm}
+    \item Different \textbf{spots} $\rightarrow$ different overlap regions and muon directions;
+    \vspace{1.6mm}
+    \item (Bottom): $\Delta x$ profile vs $x_{true}$;
+    \vspace{1.6mm}
+    \item $x_{track}$ reconstruction \textbf{systematics} $\pm$4 cm;\vspace{1.6mm}
+    \item $m_{yz}=\frac{\Delta y}{\Delta z}$ not accurately reconstructed;
+    \vspace{1.6mm}
+    \item Vertical station: \textbf{opposite $y-z$ orientated muons do not cancel out};
+    \vspace{1.6mm}
+        \item First spots: 90° panels overlap;
+        \vspace{1.6mm}
+    \item \textbf{Increase of data-taking time};
+    \vspace{1.6mm}
+\item \textbf{This calibration is expected to become challenging}. 
+}
+
+\end{itemize}
+\end{column}
+\begin{column}{0.5\framewidth}
+\vspace{-3mm}
+      \begin{figure}[!h]
+      \centering
+\includegraphics[width=1.\columnwidth]{figures/png/panel_00_x_bias_vs_x.png}
+     \label{fig:normalhits}
+\end{figure}
+\vspace{-5mm}
+         \begin{figure}[!h]
+      \centering
+      \includegraphics[width=1.\columnwidth]{figures/png/panel_00_x_bias_vs_x_prof.png}
+     \label{fig:normalhits}
+\end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{Outline}
+    
+\begin{itemize}
+\item \textcolor{mygray}{Commissioning of the tracker DAQ and FEE:}
+\begin{itemize}
+         \vspace{2mm}
+
+    \item \textcolor{mygray}{validation of ROC readout;}
+             \vspace{1.5mm}
+
+    \item \textcolor{mygray}{study of preamplifiers performance}.
+\end{itemize}
+\vspace{4mm}
+    \item \textcolor{mygray}{First steps towards the station calibration;}
+    \vspace{6mm}
+
+    \item Pre-pattern recognition studies;
+  \vspace{6mm}
+    \item \textcolor{mygray}{Conclusions.}
+\end{itemize}
+\end{frame}
+
+
+
+
+
+\begin{frame}
+    \frametitle{Introduction}
+    \vspace{-3mm}
+      \begin{columns}
+\begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+    \begin{itemize}
+    {\small
+        \item Most of \textbf{tracker hits} are $e^-$ and $e^+$ with \textbf{$E<20$ MeV} - \textbf{$\delta$-electrons}:}
+        \begin{itemize}
+          \vspace{0.8mm}
+        {\small
+            \item \textbf{Compton scattering}: interaction of $\gamma$s ($n$ capture) with material;
+             \vspace{0.8mm}
+            \item \textbf{$e^\pm$ pairs}: nuclear recoil processes;
+                 \vspace{0.8mm}
+            \item \textbf{$\delta$-rays}: interaction of high-energy charged particles with material.}
+        \end{itemize}
+             \vspace{1.3mm}
+       {\small \item Mu2e data: $\geq$7 PB/year $\rightarrow$ \textbf{CPU optimization critical};
+            \vspace{1.3mm}
+        \item Hit flagging to avoid sending them to pattern recognition;
+             \vspace{1.3mm}
+        \item Crucial step for several \textbf{physics reasons}:}
+               \vspace{0.8mm}
+        \begin{itemize}
+        {\small
+            \item \textbf{CE track reconstruction efficiency};
+                 \vspace{0.8mm}
+            \item \textbf{Protons}: complementary source to determine muon stopping rate;
+                 \vspace{0.8mm}
+            \item \textbf{$\bar{p}$ background}: correct background estimate.}
+                  \vspace{1.3mm}
+    \end{itemize}
+    \item {\small\textbf{Data-sample}:}
+           \vspace{0.8mm}
+    \begin{itemize}
+    {\small
+        \item \textbf{CE-1BB}: CE signal + pileup (1BB-$1.6 \times 10^7$ protons/pulse);
+               \vspace{0.8mm}
+        \item \textbf{CE-2BB}: CE signal + pileup (2BB-$3.9 \times 10^7$ protons/pulse);
+               \vspace{0.8mm}
+     \item \textbf{PBAR-0BB}: $\bar{p}$s and no pileup.}
+    \end{itemize}
+     \end{itemize}
+    \end{column}
+        \end{columns}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{$\delta$-electrons in Mu2e tracker}
+\vspace{-8mm}
+    \begin{columns}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+        \centering
+        \hspace*{-1em}
+        \includegraphics[width =1.1\columnwidth]{figures/png/Screenshot_20240812_152905.png}
+       \label{fig:momhits}
+\end{figure}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+               \begin{figure}[!h]
+        \centering
+         \hspace*{-1em}
+        \includegraphics[width =0.95\columnwidth]{figures/png/Screenshot_20240815_124710.png}
+       \label{fig:momhits}
+\end{figure}
+        \end{column}
+    \end{columns}
+    \vspace{-5mm}
+    \begin{columns}
+        \begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+    \begin{itemize}
+    {\small
+            \item Momentum distribution of particles making at least one hit in the tracker (Left: \textbf{CE-1BB}, Right: \textbf{PBAR-0BB})     {\footnotesize(blue) all particles, (orange) $\delta$s, (green) $p$ and $D$, (pink) $e^-$, (cyan) $e^+$, (dark green) CE, (black) $\mu$, (beige) $\pi$};
+            \vspace{1mm}
+            \item (Left): 75\% of hits by $\delta$-electrons (71\% $e^-$, 4\% $e^+$ - Compton scattering);
+              \vspace{1mm}
+            \item (Left): bump in the $e^+$ distribution ($N(\mu^+ \rightarrow e^+ )/N(\mu^- \rightarrow e^-) \sim 10^{-3}$ for $\mu$ entering the DS and DIO on IPA should be also $10^{-3}$ wrt $\mu^-$ DIF);
+              \vspace{1mm}
+            \item  (Right): $p\bar{p}$ annihilation in ST $\rightarrow$ multiple tracks with $p \sim 100/200$ MeV/c;
+              \vspace{1mm}
+            \item Reconstructing these tracks helps constrain background.
+          
+}
+           \end{itemize} 
+        \end{column}
+      
+    \end{columns}
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{$\delta$-electrons flagging algorithms}
+      \begin{columns}
+        \begin{column}{1.15\framewidth}
+       {\small Two \textbf{pre-pattern recognition  algorithms} developed in Mu2e Offline:}
+    \setlength{\leftmargini}{1.2em}
+    \begin{itemize}
+    {\small   
+    \item \textbf{FlagBkgHits} (FBH). First it finds clusters of hits close in $x-y$ and time and uses an ANN to classify them. Based on $StereoHit$ reconstruction;
+    \item \textbf{DeltaFinder} (DF). Search for hit patterns consistent with $\delta$-electron ones:
+    }
+    \begin{itemize}
+        {\small \item $\delta$ segments in each station ($seed$,  3 or 4 hits cluster in space and time);
+\item  straws intersection determined $\rightarrow$ center of gravity on $x$-$y$; 
+\item $seed$s close in $x$-$y$ and time 
+across stations connected ($\delta$ candidate); 
+\item $p$ candidates ($seed$s with $\bar{E}_{dep}>$ 3 keV).}
+    \end{itemize}
+    \end{itemize}
+    \end{column}
+    \end{columns}
+    \vspace{-3mm}
+        \begin{columns}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+        \centering
+        \hspace*{-2em}
+        \includegraphics[width =0.6\columnwidth]{figures/png/Screenshot_20240811_123048.png}
+       \label{fig:momhits}
+\end{figure}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+               \begin{figure}[!h]
+        \centering
+         \hspace*{-1em}
+        \includegraphics[width =0.75\columnwidth]{figures/png/Screenshot_20240811_115854.png}
+       \label{fig:momhits}
+\end{figure}
+        \end{column}
+    \end{columns}
+        \vspace{-3mm}
+      \begin{columns}
+        \begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+    \begin{itemize}
+    {\small   
+    \item (Left): $\delta$-electrons and CE patterns in the $r-z$ plane;
+    \item (Right): A $\delta$ candidate $seed$.}
+    \end{itemize}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Performance analysis and comparison}
+           \vspace{-0.5mm}
+  \begin{columns}
+        \begin{column}{1.15\framewidth}
+       {\small Two levels of comparison:}
+    \setlength{\leftmargini}{1.2em}
+    \begin{itemize}
+      {\small  \item \textbf{hit-level}: how accurately individual hits are flagged (most direct method);
+    \item \textbf{high-level}: reconstruction level comparison (figure of merit: CE tracks).
+    \vspace{-1mm}
+\item Before comparing: \textbf{proton hit flagging over-efficiency} by \textbf{DF}.}
+    \end{itemize}
+    \end{column}
+    \end{columns}
+        \vspace{-2mm}
+    \begin{columns}
+        \begin{column}{0.5\framewidth}
+
+    \begin{table}[h!]
+        \centering
+        \renewcommand{\arraystretch}{1.}
+        \begin{tabular}{| c | c | c | c | c|} 
+        \hline
+        &   $f_{p}$ &   $f_{e}$\\
+        \hline
+        $p$ &  96.0\% & 1.0\% \\
+        \hline
+        $\mu$ &  5.8\%  & 5.0\%\\
+        \hline
+        $\pi$ & 2.5\% &  11.2\%\\
+        \hline
+        \end{tabular}
+        \label{tab:0bbpbarbefore}
+    \end{table}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+             \begin{figure}[!h]
+            \centering
+            \includegraphics[width =0.9\columnwidth]{figures/png/Screenshot_20240805_222923.png}
+           \label{fig:0pbarbefore}
+\end{figure}
+        \end{column}
+    \end{columns}
+    \vspace{-2mm}
+    \begin{columns}
+        \begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.2em}
+    \begin{itemize}
+      {\small  \item (Left): $f_p$ and $f_e \ \rightarrow$ 
+fraction of hits flagged as 
+$p$ and $e^-$;
+\item (Right): distribution of the total (red) 
+        and flagged (green) number of $\mu$ hits as a function of the particle momentum;
+\item High $\mu$ and $\pi$ $f_p$ $\rightarrow$ low momentum (higher energy deposition as $p$);
+\item $Good$ proton candidate $\rightarrow \ \geq 4$
+hits with $E_{dep} >$ 3 keV; 
+\item $\epsilon_p$ reduced of 10\%, but $\mu$ and $\pi$ $f_p$ reduced by factor of 2 and 6 $\rightarrow$ next slide.
+}
+      \end{itemize}
+      \end{column}
+      \end{columns}
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{Hit-level comparison}
+    \vspace{-3mm}
+    \begin{columns}
+    \begin{column}{0.5\framewidth}
+    \vspace{-2mm}
+        \setlength{\leftmargini}{0.7em}
+\begin{itemize}
+{\small
+    \item (Top Tab): \textbf{PBAR}. $\mu$ and $\pi$ $f_{p,FBH}$ 4x and 3.3x higher;
+      \vspace{-0.5mm}
+      \item FBH: \textbf{supervised training} with CE+pileup dataset;
+      \vspace{-0.5mm}
+      \item $\pi$: higher momenta $\rightarrow$ smaller curvature $\rightarrow$ higher $f_e$;
+      \vspace{-0.5mm}
+      \item (Bottom Tab): \textbf{CE-1BB}. Same results for \textbf{CE-2BB} within 1\%;
+
+    }
+\end{itemize}
+        \end{column}
+         \begin{column}{0.6\framewidth}
+        \begin{table}[h!]
+        \centering
+        \hspace*{-0.5em}
+        \renewcommand{\arraystretch}{0.7}
+        \begin{tabular}{| c | c | c | c|} 
+        \hline
+         &  {\scriptsize $f_{p}$ DF} &  {\scriptsize $f_{e}$ FBH} & {\scriptsize $f_{e}$ DF}\\
+        \hline
+        {\scriptsize $\mu$} &  {\scriptsize 2.7\%}  & {\scriptsize 13.0\%} & {\scriptsize 3.2\%}\\
+        \hline
+        {\scriptsize $\pi$} & {\scriptsize 0.4\%} & {\scriptsize 23.8\%} & {\scriptsize 7.3\%} \\
+        \hline
+        \end{tabular}
+        \label{tab:0bbpbar}
+        \end{table}
+        \vspace{-6mm}
+        \begin{table}[h!]
+    \centering
+            \hspace*{-0.5em}
+    \renewcommand{\arraystretch}{0.7}
+    \begin{tabular}{| l | c | c | c |} 
+    \hline
+    &    {\scriptsize $f_{p}$ DF} & {\scriptsize $f_{e}$ FBH } & {\scriptsize $f_{e}$ DF} \\
+    \hline
+    {\scriptsize $e^-$} {\tiny$<$20 MeV/c}      & {\scriptsize 2.5\%}   & {\scriptsize 75.9\%} & {\scriptsize 72.5\%}\\
+    \hline
+    {\scriptsize $e^-$} {\tiny[20,80] MeV/c}  & {\scriptsize 1.0\%}   & {\scriptsize 50.0\%} & {\scriptsize 27.4\%} \\
+    \hline
+    {\scriptsize $e^-$} {\tiny[80,110] MeV/c}  & {\scriptsize 0.3\%}  &  {\scriptsize 5.7\%} & {\scriptsize 3.4\%}\\
+    \hline
+    {\scriptsize $p$}       &         {\scriptsize 83.7\%}   &  & {\scriptsize 1.0\%}\\
+    \hline
+    {\scriptsize $e^+$} {\tiny$<$20 MeV/c} & {\scriptsize 0.2\%}    &   {\scriptsize 85.5\%}& {\scriptsize 88.5\%}\\
+    \hline
+
+    \end{tabular}
+    \label{tab:2bbcele}
+    \end{table}
+  
+        \end{column}
+    \end{columns}
+    \vspace{-4.mm}
+          \begin{columns}
+      \begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{0.9em}
+    \begin{itemize}
+      {\small  \item \textbf{70\% more CE hits flagged} as $\delta$-electrons by FBH with respect to DF; 
+      \vspace{-0.5mm}
+      \item \textbf{No $p$ flagging comparison} (FBH identifies only high $E_{dep}$ particles).
+}
+      \end{itemize}
+      \end{column}
+      \end{columns}
+          \vspace{-3.7mm}
+\begin{columns}
+ 
+    \begin{column}{0.33\framewidth}
+        \begin{figure}[!h]
+            \centering
+            \hspace*{-1em}
+            \includegraphics[width =1.2\columnwidth]{figures/png/Screenshot_20240818_155835.png}
+           \label{fig:0pbarbefore}
+\end{figure}
+    \end{column}
+      \begin{column}{0.33\framewidth}
+        \begin{figure}[!h]
+            \centering
+                        \hspace*{-0.2em}
+            \includegraphics[width =1.\columnwidth]{figures/png/Screenshot_20240820_154854.png}
+           \label{fig:0pbarbefore}
+\end{figure}
+    \end{column}
+       \begin{column}{0.4\framewidth}
+        \setlength{\leftmargini}{0.5em}
+        \begin{itemize}
+           {\small 
+           \item (Left): $e^-$ and $e^+$ $f_e$ vs momentum (FBH);
+           \vspace{-0.5mm}
+           \item 1-2 MeV: $\delta$s with 1/2 hits per station (DF>3hits);
+                      \vspace{-0.5mm}
+           \item >2 MeV: larger $xy$ spread;
+                      \vspace{-4.5mm}
+           \item (Right): $e^-$ (pink) and $e^+$ (black, no Compton) $E$ distribution ($E<2$ MeV).}
+        \end{itemize}
+    \end{column}
+\end{columns}
+   
+\end{frame}
+
+\begin{frame}
+    \frametitle{High-level comparison}
+    \vspace{-5mm}
+     \begin{columns}
+    \begin{column}{0.5\framewidth}
+    \vspace{-2mm}
+        \setlength{\leftmargini}{0.7em}
+\begin{itemize}
+{\small
+    \item (Top Tab): \textbf{PBAR}. DF has 22\% advantage in reconstructing 2 tracks (hit-level);
+            \vspace{-1mm}
+\item 80 MeV/c cut: minimum reconstructable particle $p$ from ST in the tracker;
+        \vspace{-1mm}
+ \item 90 MeV/c cut: DIO suppression;
+    }
+\end{itemize}
+        \end{column}
+         \begin{column}{0.6\framewidth}
+        \begin{table}[h!]
+        \centering
+        \hspace*{-0.5em}
+        \renewcommand{\arraystretch}{0.7}
+           \begin{tabular}{| c | c | c |} 
+            \hline
+            {\scriptsize fraction of events} &  {\scriptsize FBH } &  {\scriptsize DF}\\
+            \hline
+              {\scriptsize $N_{tracks} \geq 2$} &   {\scriptsize 1.8\%} &  {\scriptsize 2.2\%}\\
+            \hline
+             {\scriptsize $N_{tracks} \geq 2$ \& $p>$80 MeV/c} &  {\scriptsize 1.7\%} &  {\scriptsize 2.1\%}\\
+            \hline
+             {\scriptsize $N_{tracks} \geq 2$ \& $p>$90 MeV/c } &  {\scriptsize 1.6\%} &  {\scriptsize 2.0\%}\\
+            \hline
+            \end{tabular}
+        \label{tab:0bbpbar}
+        \end{table}
+        \vspace{-6mm}
+        \begin{table}[h!]
+    \centering
+            \vspace{-1mm}
+            \hspace*{-0.5em}
+    \renewcommand{\arraystretch}{0.7}
+    \begin{tabular}{| c | c | c |} 
+    \hline
+    & {\scriptsize FBH} & {\scriptsize DF}  \\
+    \hline
+    {\scriptsize CE events with $N_{tracks}>0$} & {\scriptsize 37.9\%} & {\scriptsize 37.9\%} \\
+    \hline
+    \end{tabular}
+    \label{tab:2bbcele}
+    \end{table}
+  
+        \end{column}
+    \end{columns}
+    \vspace{-6mm}
+ \begin{columns}
+        \begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.1em}
+    \begin{itemize}
+    {\small   
+    \item (Bottom Tab): \textbf{CE-1BB}. Same CE reconstruction efficiency (the hit-level difference is 1 hit/track);
+        \vspace{-0.5mm}
+    \item FBH (blue) \& DF (red) reconstructed tracks $p$ distributions (two ranges);
+    \vspace{-0.5mm}
+    \item FBH flags less proton hits and these hits are sent to pattern recognition.
+    }
+    \end{itemize}
+    \end{column}
+    \end{columns}
+        \vspace{-3mm}
+     \begin{columns}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.9\columnwidth]{figures/png/Screenshot_20240820_162125.png}
+       \label{fig:momhits}
+\end{figure}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+               \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.9\columnwidth]{figures/png/Screenshot_20240820_160904.png}
+       \label{fig:momhits}
+\end{figure}
+        \end{column}
+    \end{columns}
+     
+\end{frame}
+
+
+
+
+
+
+
+\begin{frame}
+    \frametitle{Outline}
+    
+\begin{itemize}
+\item \textcolor{mygray}{Commissioning of the tracker DAQ and FEE:}
+\begin{itemize}
+         \vspace{2mm}
+
+    \item \textcolor{mygray}{validation of ROC readout;}
+             \vspace{1.5mm}
+
+    \item \textcolor{mygray}{study of preamplifiers performance}.
+\end{itemize}
+\vspace{4mm}
+    \item \textcolor{mygray}{First steps towards the station calibration;}
+    \vspace{6mm}
+
+    \item \textcolor{mygray}{Pre-pattern recognition studies;}
+  \vspace{6mm}
+    \item Conclusions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusions}
+\vspace{-4mm}
+\begin{columns}
+\begin{column}{1.15\framewidth}
+ \setlength{\leftmargini}{1.2em}
+    \begin{itemize}
+\item \textbf{CLFV} processes provide a clean test field for \textbf{NP models};
+\item \textbf{Mu2e} is one of the leading experiments and searches for $\mu^- N \rightarrow e^- N$;
+\item Mu2e success depends on the performance of the \textbf{tracker};
+    \item \textbf{Comprehensive study} from the tracker readout to offline analysis:
+   \begin{itemize}
+      \vspace{0.7mm}
+   \item \textbf{DAQ} and \textbf{FEE} testing:
+   \vspace{0.4mm}
+      \begin{itemize}
+          
+     
+    \item \textbf{ROC readout valitation} with MC at a level of $10^{-3}$;
+    \item \textbf{Preamps performance study}: dead channels, 
+cross-talk between the channels, and waveform patterns study.
+ \end{itemize}
+    \vspace{0.7mm}
+ \item \textbf{First steps towards timing calibration}:
+  \vspace{0.4mm}
+ \begin{itemize}
+     \item \textbf{Vertical station orientation} $\rightarrow$ non-uniform panel illumination;
+     \item Large \textbf{bias} on $x_{track}$ reconstruction ($\pm$4 cm);
+     \item Increase of data-taking time;
+ \end{itemize}
+   \vspace{0.7mm}
+ \item \textbf{Pre-pattern recognition study} to flag $\delta$-electrons:
+  \vspace{0.4mm}
+  \begin{itemize}
+  \item \textbf{Hit-level}: FBH flags 70\% more CE hits, same performance for $\delta$s, no possible $p$ flag comparison, FBH not trained one $\bar{p}$ data sample;
+  \item \textbf{High-level}: same recostruction performance for CE signal;
+  \item  \textbf{Timing}: 0.13, 0.39 ms/ev (1BB, 2BB) more for DF vs 5 ms/ev expected;
+     \item \textbf{Important to improve $TimeCluster$ efficiency}.
+ \end{itemize}
+   \end{itemize}
+    \end{itemize}
+    \end{column}
+\end{columns}
+
+\end{frame}
+
+
+
+\begin{frame} % and our simple frame
+    \begin{center}
+            \LARGE{\textbf{Thank you for your attention!}}
+    \end{center}
+\end{frame}
+\begin{frame}{Bibliography} % and our simple frame
+\begin{columns}
+    \begin{column}{1.04\framewidth}
+            \setlength{\leftmargini}{1.05em}
+    \bibliographystyle{siam}
+   {\footnotesize \bibliography{presentazione.bib}}
+    \end{column}
+\end{columns}
+
+\end{frame}
+\begin{frame} % and our simple frame
+    \begin{center}
+            \LARGE{\textbf{BACKUP SLIDES}}
+    \end{center}
+\end{frame}
+\begin{frame}{Charged Lepton Flavour Violation (CLFV)}
+\vspace{-1mm}
+\setlength{\leftmargini}{0em}
+\begin{itemize}
+\item \textbf{EFT} Lagrangian parametrisation (model-indipendent): $\Lambda$ is the effective mass scale and $\kappa$ controls the relative contribution of the dipole moment term and the four fermion term.
+\end{itemize}
+\begin{equation*}\label{LCF}
+\mathscr{L}_{C L F V}= & \frac{m_\mu}{(1+\kappa) \Lambda^2} \bar{\mu}_R \sigma_{\mu \nu} e_L F^{\mu \nu}+ \frac{\kappa}{(1+\kappa) \Lambda^2} \bar{\mu}_L \gamma_\mu e_L\left(\sum_{q=u, d} \bar{q}_L \gamma^\mu \bar{q}_L\right)
+\end{equation*}
+\vspace{-3mm}
+\begin{columns}
+\begin{column}{0.5\framewidth}
+                \begin{figure}[h]
+            \centering
+            \hspace*{-6ex}
+            \includegraphics[width=0.8\columnwidth]{figures/png/Screenshot_20240913_151711.png}
+        \end{figure} 
+        \begin{figure}[h]
+            \centering
+            \hspace*{-6ex}
+            \includegraphics[width=0.8\columnwidth]{figures/png/Screenshot_20240913_151719.png}
+        \end{figure}  
+    \end{column}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[h]
+            \centering
+            \hspace*{-6ex}
+            \includegraphics[width=0.85\columnwidth]{figures/png/Screenshot_20240313_120457.png}
+        \end{figure}  
+    \end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Possible CLFV models}
+    contenuto terza slide
+\end{frame}
+
+\begin{frame}
+    \frametitle{CLFV experiments}
+    contenuto terza slide
+\end{frame}
+
+\begin{frame}
+    \frametitle{Mu2e beamline}
+    contenuto terza slide
+\end{frame}
+
+\begin{frame}
+    \frametitle{Why Al Stopping Target?}
+    \vspace{-3mm}
+\begin{columns}
+ \begin{column}{0.65\framewidth}
+ \setlength{\leftmargini}{1.1em}
+
+    \begin{itemize}
+   {\small     \item Lower RMC background. Photon endpoint: {\footnotesize $k_{max} = m_\mu c^2 - |E_b| - E_{rec} - \Delta M$ }
+        \\
+        $\sim$101.9 MeV, $\sim$3.1 MeV below CE; 
+
+\item (Top): quite long lifetime, allowing separation between prompt backgrounds and live window; 
+
+
+\item (Bottom): DIO endpoint dependence on nucleus type. 
+Al $\rightarrow$ high endpoint. Higher-$Z$ nuclei $\rightarrow$ lower endpoint, minimizing background contribution;
+
+\item Conversion $BR$ depends on the ST material. Comparison of conversion $BR$s on different nuclei 
+normalized to aluminum $\rightarrow$ dominating 
+operator type. Materials with higher $Z$ $\rightarrow$ better model differentiation (Mu2e-II Ti);
+\item Available in required size/shape/thickness, low costs and chemically stable.}
+    \end{itemize}
+\end{column}   
+ \begin{column}{0.5\framewidth}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.8\columnwidth]{figures/png/lifetime_mu_matter.png}
+        \label{fig:muonicatom}
+ \end{figure}
+       \begin{figure}[!h]
+        \centering
+        \includegraphics[width=0.8\columnwidth]{figures/png/endopint.png}
+        \label{fig:endpoint}
+    \label{fig:2imins}
+  \end{figure}
+   \caption[The muonic atom mean lifetime and muonic free decay fraction. The dependence 
+   of the electron energy spectrum endpoint
+   on the DIO.]{(a) The dependence of the mean lifetime and free decay fraction 
+   of the muonic $1s$ state on the atomic number of the nucleus to which 
+   the negative muon is bound \cite{TYamazaki_1975}, and (b) 
+   the dependence of the electron 
+   energy spectrum endpoint on the DIO \cite{dukes}.}
+\end{column}   
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Extinction monitor}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Cosmic Ray Veto and Stopping Target Monitor}
+    \vspace{-2mm}
+ \begin{columns}
+            \begin{column}{0.55\framewidth}
+                     \textbf{Cosmic Ray Veto}:
+         \begin{itemize}
+         \item \textbf{Active veto}: 4 layers of extruded plastic scintillation counters;
+                \item \textbf{Passive shielding}: Al absorbers between each layer;
+               \item $\mu$'s signature: 3/4 vetoed.
+            \end{itemize}
+             \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.9\columnwidth ]{figures/png/Screenshot_20240706_094517.png}
+        \end{figure}
+            \end{column}
+            \begin{column}{0.55\framewidth}
+            \begin{figure}[h]
+            \centering
+            \includegraphics[width=0.8\columnwidth ]{figures/jpg/Crv_downstream.jpg}
+        \end{figure}
+        \textbf{Stopping Target Monitor}:
+            \begin{itemize}
+                \item HPGe and  $ \text{LaBr}_3$ detector $\rightarrow$ number of $\mu$ stopped in ST (10\% precision on $N_\mu$);
+                \item It will measure the photons produced by secondary muonic aluminium orbital transitions (347 keV) and nuclear capture (884 keV, 1809 keV).
+            
+            \end{itemize}
+                         
+            \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Drift tubes}
+    contenuto terza slide
+\end{frame}
+
+\begin{frame}
+    \frametitle{determine channel to channel delay}
+    contenuto terza slide
+\end{frame}
+\begin{frame}
+    \frametitle{distribuzione dei raggi cosmic}
+    contenuto terza slide
+\end{frame}
+
+\begin{frame}
+    \frametitle{plot dei raggi cosmici con le nostre selezioni}
+    contenuto terza slide
+\end{frame}
+
+
+
+
+\begin{frame}
+    \frametitle{$\delta$-electron sources}
+    \vspace{-4mm}
+    \begin{columns}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =0.8\columnwidth]{figures/png/Screenshot_20240812_204345.png}
+               \end{figure}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =0.8\columnwidth]{figures/png/Screenshot_20240812_204755.png}
+               \end{figure}
+        \end{column}
+    \end{columns}
+
+    \begin{columns}
+        \begin{column}{1.15\framewidth}
+            \begin{itemize}
+               {\small \item \textbf{Compton scattering}: by $\gamma$s interacting with the detector material. 
+               Muon capture $\rightarrow$ neutrons $\rightarrow$ neutron capture $\gamma$ emission ($E_\gamma \sim$MeV). 
+               The Compton effect (Left) is the scattering of a photon by a free or quasi-free ($E_\gamma \gg E_B$)
+               electron. $e^-/ e^+$ asymmetry. Compton cross section per atom proportional to $Z$;  
+               \item \textbf{Pair production} (Right): from nuclear recoil processes. In the Coulomb 
+               field of a charge, a photon can convert into an $e^- - e^+$ pair. $Z^2$ dependence.  
+               $E_{\gamma} \geq 2m_e c^2 + 2 \frac{m_e^2}{m_{\text{nucleus}}} c^2$;
+              
+               \item \textbf{Delta rays} (or secondary ionization electrons): generated
+               when high-energy charged particles collide with the detector material. 
+               A particle collides with shell $e^-$, 
+               resulting in significant energy transfers. 
+                }
+            \end{itemize}
+        \end{column}
+        \end{columns}
+\end{frame}
+\begin{frame}
+    \frametitle{$\bar{p}$ background in Mu2e}
+    \vspace{-4mm}
+    \begin{columns}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =0.6\columnwidth]{figures/png/Screenshot_20240926_115031.png}
+               \end{figure}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =0.6\columnwidth]{figures/png/Screenshot_20240926_115050.png}
+               \end{figure}
+        \end{column}
+    \end{columns}
+\vspace{-3mm}
+    \begin{columns}
+    \begin{column}{1.15\framewidth}
+        \begin{itemize}
+           {\small \item $\bar{p}$s are produced from $pW$ interactions;
+           \vspace{-1mm}
+           \item $p\bar{p}$ annihilation at ST $\rightarrow$ $e^-$ by $\pi^0\rightarrow \gamma \gamma$ followed by $\gamma$ 
+           conversions and $\pi^- \rightarrow \mu^- \bar{\nu}$;
+           \vspace{-1mm}
+           \item The background cannot be suppressed by cuts on the time window because $\bar{p}$s are slower than other
+           beam particles;
+           \vspace{-1mm}
+           \item There are absorber elements placed in the TS to suppress the $\bar{p}$s;
+           \vspace{-1mm}
+           \item  $p\bar{p}$ annihilation at ST can give multiple particle tracks with $p \sim$100 MeV/c for each track at much
+           higher rate than signal-like;
+           \vspace{-1mm}
+           \item From MC, it was estimated that the rate of such multi-track
+           events is $\times 500$ higher than the rate of events with 1 signal like
+           $e^-$;
+           \vspace{-1mm}
+           \item The analysis aims to reconstruct the multi-track final 
+           state events and get an estimate of the CE like events by rescaling the two final states ratio.
+            }
+        \end{itemize}
+    \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Monte Carlo deposited energy in the tracker}
+    \vspace{-2mm}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width =0.6\textwidth]{figures/png/Screenshot_20240729_151910.png}
+   \end{figure}
+       \vspace{-3mm}
+
+   \begin{columns}
+       \begin{column}{1.15\framewidth}
+               \setlength{\leftmargini}{1.1em}
+       \begin{itemize}
+           
+   {\small    \item The Monte Carlo deposited energy 
+   distribution in the tracker ($CE-1BB$ data sample);
+   \item (Red) CEs, (green) $\delta$-electrons, (blue) protons. 
+   \item Peaks and tails $\rightarrow$ saturated waveform; 
+   \item Only about 4\% of CE hits have energies above 3.5 keV 
+(1\% above 5 keV);
+   \item Applying an energy threshold in DF can speed up processing, but impacts algorithm efficiency, especially in $seed$ reconstruction.
+        }
+
+       \end{itemize}  
+       \end{column}
+   \end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Mu2e event reconstruction}
+    \vspace{-3mm}
+\begin{columns}
+\begin{column}{0.65\framewidth}
+ \setlength{\leftmargini}{1.2em}
+ \vspace{-3mm}
+\begin{itemize}
+{\small\item Mu2e event reconstruction is optimised to
+reconstruct single-track events with tracks coming
+from the ST;
+ \vspace{1.2mm}
+\item  Adjacent $StrawHit$s within a panel, which are most likely due to the same particle, are combined 
+into a $ComboHit$;
+\vspace{1.2mm}
+\item $\delta$-electron pre pattern recognition;
+\vspace{1.2mm}
+\item We cluster the hits within a time window to form
+$TimeCluster$s assuming that such hits are made
+by the same particle;
+\vspace{1.2mm}
+\item Hits from $TimeCluster$s are used to form helices;
+\vspace{1.2mm}
+\item Final parameters of the track are determined by
+the Kalman fit.}
+\end{itemize}
+\end{column}    
+\begin{column}{0.5\framewidth}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.7\textwidth]{figures/png/Screenshot_20240811_123612.png}
+       
+        \label{fig:bef}
+\end{figure}
+     \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.7\textwidth]{figures/png/Screenshot_20240811_124245.png}
+        
+        \label{fig:af}
+    \end{figure}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Time Clustering}
+    \vspace{-3mm}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.5\textwidth]{figures/png/Screenshot_20240809_162925.png}
+       \end{figure}
+       \vspace{-2mm}
+    \begin{columns}
+        \begin{column}{1.15\framewidth}
+            \setlength{\leftmargini}{1.1em}
+            {\small \textbf{Time clustering process}:}
+            \begin{enumerate}
+               {\small \item Combination of at least 3 $ComboHit$s within a specific $time-z$ 
+               window (with a 
+               20 ns time window and a 5-plane z-window);
+               \item $Chunk$s are created;
+               \item  Every potential pair of chunks 
+               within a certain time 
+               proximity is tested together, 
+               and the pair, that minimizes 
+               the $\chi^2/ndof$ when the hits 
+               are fit to a linear line, is combined;
+               \item Procedure repeated until no further combinations 
+               yield a $\chi^2/ndof$ below a set 
+               threshold.
+                }
+            \end{enumerate}
+        \end{column}
+        \end{columns}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Time Clustering development}
+    \vspace{-4mm}
+    \begin{columns}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =\columnwidth]{figures/png/Screenshot_20240926_095738.png}
+               \end{figure}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =\columnwidth]{figures/png/Screenshot_20240926_095542.png}
+               \end{figure}
+        \end{column}
+    \end{columns}
+
+\begin{columns}
+\begin{column}{1.15\framewidth}
+    \begin{itemize}
+       {\small \item There is a well defined class of events where the effects of hit flaggers get washed out in the reconstruction by the time clustering algorithm;
+        \item Example:
+        \begin{itemize}
+            \item DF: hits from one particle divided in two different time clusters;
+            \item FBH: not flagged particle hits are used by the time clusterer to $connect$ particle hits that are used in the reconstruction. That is why the track is reconstructed in this case.
+        \end{itemize}
+        
+        \item Improving the cluster finder and the pattern recognition could increase the track reconstruction performance.
+        }
+    \end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\end{document}
+

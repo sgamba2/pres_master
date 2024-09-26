@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: presentazione.aux
+The style file: siam.bst
+Database file #1: presentazione.bib
+You've used 7 entries,
+            2030 wiz_defined-function locations,
+            548 strings with 4723 characters,
+and the built_in function-call counts, 1903 in all, are:
+= -- 180
+> -- 49
+< -- 0
++ -- 21
+- -- 14
+* -- 121
+:= -- 293
+add.period$ -- 7
+call.type$ -- 7
+change.case$ -- 27
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 111
+empty$ -- 163
+format.name$ -- 14
+if$ -- 417
+int.to.chr$ -- 0
+int.to.str$ -- 7
+missing$ -- 7
+newline$ -- 24
+num.names$ -- 14
+pop$ -- 29
+preamble$ -- 1
+purify$ -- 21
+quote$ -- 0
+skip$ -- 96
+stack$ -- 0
+substring$ -- 112
+swap$ -- 48
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 26
+warning$ -- 0
+while$ -- 19
+width$ -- 8
+write$ -- 60
