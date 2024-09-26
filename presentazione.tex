@@ -1095,7 +1095,7 @@ across channels.}
 
 
 \begin{frame}
-    \frametitle{Muon selection and reconstruction}
+    \frametitle{Monte Carlo muon selection and reconstruction}
 \vspace{-4.6mm}
     \begin{columns}
 \begin{column}{0.65\framewidth}
@@ -1129,7 +1129,7 @@ across channels.}
  \vspace{-1mm}
         \begin{itemize}
         {\small \item $StrawHit$s $\rightarrow$ 1 $ClusterHit$ (face);
-          \item 2 $ClusterHit$s $\rightarrow$ $StereoHit$  (plane);
+          \item 2 $ClusterHit$s $\rightarrow$ $StereoHit$ (plane);
           \item 2 $StereoHit$s $\rightarrow$ reconstructed track.}
         \end{itemize}
 
@@ -1954,6 +1954,9 @@ operator type. Materials with higher $Z$ $\rightarrow$ better model differentiat
 \end{columns}
 
 \end{frame}
+\begin{frame}
+    \frametitle{Proton pulses and off spill on spill}
+\end{frame}
 
 \begin{frame}
     \frametitle{Extinction monitor}
@@ -1996,19 +1999,209 @@ operator type. Materials with higher $Z$ $\rightarrow$ better model differentiat
     \frametitle{Drift tubes}
     contenuto terza slide
 \end{frame}
-
 \begin{frame}
-    \frametitle{determine channel to channel delay}
+    \frametitle{Lorentz effect}
     contenuto terza slide
 \end{frame}
 \begin{frame}
-    \frametitle{distribuzione dei raggi cosmic}
-    contenuto terza slide
+    \frametitle{DAQ system}
+\begin{columns}
+    \begin{column}{0.65\framewidth}
+        \vspace{-3mm}
+        \setlength{\leftmargini}{1.2em}
+    \begin{itemize} 
+   {\footnotesize     \item $Streaming$ readout: digitized and zero-suppressed data; 
+        \vspace{-0.5mm}
+        \item High data throughput, flexible for analysis; 
+        \vspace{-0.5mm}
+        \item DAQ run control via RCH, managing a 
+        predefined Run Plan; 
+        \vspace{-0.5mm}
+        \item Active spill defined by RF Zero-Crossing Markers 
+        from the Accelerator, synced to \\ 1695 ns proton pulses, defining the EW; 
+        \vspace{-0.5mm}
+        \item CFO module generates 40 MHz clock, embedding EWMs synced to the system; 
+        \vspace{-0.5mm}
+        \item CFO distributes the clock and run control packets to DTCs in DAQ servers; 
+        \vspace{-0.5mm}
+        \item DTCs pass the clock to ROCs and EWMs recovered; 
+   
+       
+   
+    }
+    \end{itemize}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+        \begin{figure}[!h]
+            \centering
+            \hspace*{-2em}
+            \includegraphics[width =1.1\columnwidth]{figures/png/Screenshot_20240206_144803.png}
+            \label{fig:linktodaq}
+            \end{figure}
+    \end{column}
+\end{columns}
+\vspace{-1.5mm}
+\begin{columns}
+    \begin{column}{1.15 \framewidth}
+        \setlength{\leftmargini}{1.1em}
+        \begin{itemize}
+          {\footnotesize 
+          \item ROCs use EWMs to separate data from consecutive EWs; 
+          \vspace{-0.5mm} 
+          \item Data Requests trigger ROC data transmission through DTCs post-event;
+        \vspace{-0.5mm} 
+          \item EBS routes data from multiple DTCs for online analysis; 
+        \vspace{-0.5mm} 
+           \item Events logged and transferred to long-term storage (7 PB/year); 
+            \vspace{-0.5mm}
+            \item DTCs handle slow control data, managed by DCS Host and stored.}
+        \end{itemize}
+    \end{column}
+\end{columns}
 \end{frame}
+\begin{frame}
+    \frametitle{Tracker data format}
+    \begin{columns}
+        \begin{column}{1.15\framewidth}
+    \setlength{\leftmargini}{1.em}
+
+    A \textbf{hit data packet} has
+    a fixed length of 256 bits (32 bytes).
+    The packet structure is as follows:
+    \vspace{2mm}
+    \begin{itemize}
+        \item 16 bit header (straw index);
+        \vspace{1mm}
+        \item 16 bit for the TDC left straw end;
+        \vspace{1mm}
+        \item 16 bit for the TDC right straw end;
+        \vspace{1mm}
+        \item The ToT (time-over-threshold) values for the two ends 
+        of the straw are each stored using 8 bits;
+        \vspace{1mm}
+        \item The ADC samples require 12 bits each. For each hit, a fixed number of 
+        samples (15) is readout;
+        \vspace{1mm}
+        \item 12 bits are set aside for preprocessing flags.
+    \end{itemize}
+\end{column}
+\end{columns}
+    \end{frame}
 
 \begin{frame}
-    \frametitle{plot dei raggi cosmici con le nostre selezioni}
-    contenuto terza slide
+    \frametitle{Additional plots}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.8\textwidth]{figures/pdf/figure_00014_nhitsvschannel_roc_simulation_281.pdf}
+        \label{fig:anglesinmuon}
+    \end{figure}
+    \begin{itemize}
+        \item Zoom on the last readout channels of the occupancy plot.
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Additional plots}
+    \vspace{-2mm}
+    \begin{columns}
+        \begin{column}{0.5\textwidth}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.9\columnwidth]{figures/pdf/charge.pdf}
+        \label{fig:anglesinmuon}
+    \end{figure}
+\end{column}
+\begin{column}{0.5\textwidth}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.9\columnwidth]{figures/pdf/phch1.pdf}
+        \label{fig:anglesinmuon}
+    \end{figure}
+\end{column}
+\end{columns}
+\vspace{-2mm}
+\begin{figure}[!h]
+    \centering
+    \includegraphics[width =0.45\textwidth]{figures/pdf/phtmean1.pdf}
+    \label{fig:anglesinmuon}
+\end{figure}
+\vspace{-2mm}
+        \begin{columns}
+            \begin{column}{1.15\framewidth}
+                \setlength{\leftmargini}{1.em}
+                \begin{itemize}
+
+      {\small  \item (Left): The (positive) charge distribution of the waveforms (channel 66).;
+        \item (Right): 2D distribution of pulse height versus (positive) charge. }
+    \end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\begin{frame}
+
+    \frametitle{Cosmic muons simulation with CRY}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.4\textwidth]{figures/png/Screenshot_20240526_140716.png}
+        \label{fig:anglesinmuon}
+    \end{figure}
+        \begin{columns}
+            \begin{column}{1.15\framewidth}
+                \setlength{\leftmargini}{1.em}
+
+                \begin{itemize}
+                   {\small 
+                   
+                    \item CRY (LANL) was used to generate cosmics (straightforward implementation);
+                    \item It simulates protons (1 GeV,100 TeV), at the top of the 
+                    atmosphere and generation of muons from the pion decays. 
+                    \item It follows Gaisser-Tang model:
+                    \\     {\footnotesize               $ \frac{d I}{d E_\mu d \Omega d t d S}=\frac{0.14}{\mathrm{cm}^2 \mathrm{~s} \ \mathrm{sr} }\left( \frac{E_\mu}{\mathrm{GeV}} \left(1+\frac{3.64 \mathrm{GeV}}{E_\mu\left(\cos \theta^*\right)^{1.29}}\right)\right)^{-2.7}\left[\frac{1}{1+\frac{1.1 E_\mu \cos \theta^*}{115 \mathrm{GeV}}}+\frac{0.054}{1+\frac{1.1 E_\mu \cos \theta^*}{850 \mathrm{GeV}}}\right]$};
+                     \item cos$\theta^*$ is given by:
+                     {\footnotesize  $\cos \theta^*=\sqrt{\frac{(\cos \theta)^2+P_1^2+P_2(\cos \theta)^{P_3}+P_4(\cos \theta)^{P_5}}{1+P_1^2+P_2+P_4}}$
+                     \\ with $P_1\sim$0.10, $P_2\sim$-0.07, $P_3\sim$0.96, $P_4\sim$0.04 and $P_5\sim$0.82};
+                    \item (Top): $\theta^*$ and $\theta$, zenith angle of muons and 
+                   at the muon production point. 
+                   }
+                \end{itemize}
+            \end{column}
+            \end{columns}
+\end{frame}
+\begin{frame}
+    \frametitle{How to determine channel-to-channel delays}
+$$
+            \frac{(t_1 + t_2)}{2} = t_d+t_0+\frac{d_1+d_2}{2}-\cfrac{L}{2v} 
+ $$
+ \begin{columns}
+    \begin{column}{1.15\framewidth}
+ \begin{itemize}
+    \item $(t_1 + t_2) / 2$ allows to measure the drift time  
+    up to an offset common to all channels.
+
+ \end{itemize}
+
+\end{column}
+    \end{columns}
+\end{frame}
+\begin{frame}
+    \frametitle{Reconstructed muon direction}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.8\textwidth]{figures/png/myz_rec.png}
+       \end{figure}
+       \begin{columns}
+        \begin{column}{1.15\framewidth}
+            \begin{itemize}
+               {\small \item Lots of muons reconstructed with $m_{yz}\sim 0$ (horizontal);
+               \item The true hit position, far from the straws midpoint, 
+               results in incorrectly reconstructed tracks' direction on the $y-z$ plane.
+                }
+            \end{itemize}
+        \end{column}
+        \end{columns}
 \end{frame}
 
 
