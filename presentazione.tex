@@ -2407,12 +2407,127 @@ system, pixel telescope, trigger scintillators;
 
 \begin{frame}
     \frametitle{Drift tubes}
-    contenuto terza slide
+    \vspace{-4mm}
+    \begin{columns}
+        \begin{column}{0.65\framewidth}
+            \setlength{\leftmargini}{1.1em}
+            \begin{itemize}
+               {\small \item Cathode: grounded cylindrical conductor;
+               \vspace{1mm}
+                \item Gases combination (noble, quench gas);
+                \vspace{1mm}
+                \item Anode wire $\rightarrow$ high voltage $\mathcal{O}(\text{kV})$; 
+                \vspace{1mm}
+                \item $E(r)=\frac{1}{r}\frac{\lambda}{2\pi \epsilon}=\frac{1}{r}\frac{V}{ \text{ln}(b/a)} \quad (a<r<b)$;
+                \vspace{1mm}
+                \item Primary ionisation: $A \ C \rightarrow A^+ e^- C$, or $A \ C \rightarrow A^{++} e^- e^- C$;
+                \vspace{1mm}
+                \item Excitation: $A \ C \rightarrow A^* C$;
+                \vspace{1mm}
+                \item Secondary ionisation $\rightarrow$ avalanche;
+                \vspace{1mm}
+                \item Induced signal dominated by ions movement;
+                \vspace{1mm}
+                \item Proportional region;
+                \vspace{1mm}
+                \item Quench gas (CO$_2$): needed to absorb photons from recombination and 
+                electron attachement and to prevent subsequent 
+                avalanches.
+                
+                }
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =0.9\columnwidth]{figures/png/Screenshot_20240324_232621.png}
+                \label{fig:drifttube}
+                \end{figure}
+                \begin{figure}[!h]
+                    \centering
+                    \includegraphics[width =0.9\columnwidth]{figures/png/Screenshot_20240330_182509.png}
+                  \label{fig:avalanche}
+                  \begin{figure}[!h]
+                    \centering
+                    \includegraphics[width =0.75\columnwidth]{figures/png/Screenshot_20240330_203416.png}
+                    \label{fig:gaseous}
+                    \end{figure}
+                \end{figure}
+        \end{column}
+    \end{columns}
 \end{frame}
+
+
+
+
+
 \begin{frame}
-    \frametitle{Lorentz effect}
-    contenuto terza slide
+   
+       
 \end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Drift tubes in magnetic field}
+
+    \vspace{-4mm}
+    \begin{columns}
+        \begin{column}{0.65\framewidth}
+            \setlength{\leftmargini}{1.1em}
+            \begin{itemize}
+               {\small \item The sum of the electric drift field and magnetic field produce several effects: }
+               \begin{itemize}
+                {\small       \item change of the drift direction and velocity ($v_d$ decreases 
+                as $B$ increases); 
+                \item reduction of diffusion transverse to the magnetic field. 
+                } 
+            \end{itemize}
+                {\footnotesize \item These effects depends on the type of drift gas 
+                and the magnetic and electric field relative orientation;
+                \item    $     \vec{v}_D^B=-\frac{\mu^{B=0}}{1+\omega^2 \tau^2}\left(\vec{E}+\frac{\vec{E} \times \vec{B}}{B} \omega \tau+\frac{(\vec{E} \vec{B}) \vec{B}}{B^2} \omega^2 \tau^2\right)$;
+                \item $\mu_B = 0$ mobility with zero magnetic field;
+                \item $\omega = \frac{qB}{m}$ cyclotron frequency; 
+                \item $\tau$ electron average collision time in the gas;
+                \item Mu2e straws orthogonal to $B$;
+                \item Angle between drift direction and $B$ varies from 0° to 90°;
+                \item In Ar:CO$_2$, $v_{d}$ depends on the electric field;
+                \item Difference of 8 ns at radial distance of 2.5 mm.
+
+                }
+                 
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =0.9\columnwidth]{figures/png/Screenshot_20240925_214957.png}
+                \label{fig:driftchange}
+                \end{figure}
+
+            \begin{figure}[!h]
+                \centering
+                \includegraphics[width =0.7\columnwidth]{figures/png/Screenshot_20240330_102206.png}
+                \label{fig:drift}
+                \end{figure}
+        \end{column}
+    \end{columns}
+
+    
+    \begin{itemize} 
+  
+    \end{itemize}
+    
+
+\end{frame}
+
+
+
+
+
+
+
+
 \begin{frame}
     \frametitle{DAQ system}
 \begin{columns}
