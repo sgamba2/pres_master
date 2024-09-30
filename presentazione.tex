@@ -301,7 +301,7 @@ live window:
         \item The 2 digi-FPGA create one data packet for each hit containing the \textbf{two hit times} and \textbf{one waveform};
         \item Data packets are transferred to the \textbf{ROC} {\footnotesize(Readout Controller)};
         \item ROC collects, buffer and transfer data from digi-FPGAs to \textbf{DTC} {\footnotesize(Data Transfer Controller)} installed on \textbf{DAQ} computers;
-        \item DTC sends data request to the ROC and data from DTC is sent to the Event Builder.}
+        \item DTC sends data request to the ROC and sends it to the Event Builder.}
          \end{itemize}
     \end{column}
     \begin{column}{0.5\framewidth}
@@ -405,9 +405,9 @@ Mu2e tracker will be $\delta$-electrons;
       \begin{itemize}
       \item \textbf{ROC readout validation};
       \vspace{1mm}
-          \item \textbf{TS1 tracker test stand}: one DTC connected to the DAQ computer, one ROC (one tracker panel-96 channels);
+          \item \textbf{TS1 tracker test stand}: one ROC (one tracker panel-96 channels), one DTC connected to the DAQ computer;
              \vspace{1mm}
-          \item ROC can be operated in two different data readout modes:
+          \item  Two different ROC data readout modes:
           \begin{itemize}
               \item MODE 1: emulated data readout mode;
               \item \textbf{MODE 2}: digi-FPGA readout mode.
@@ -443,12 +443,12 @@ Mu2e tracker will be $\delta$-electrons;
         \begin{itemize}
          \item Depending on $T_{gen}=1/f_{gen}$ and $T_{EW}$, the data taking can proceed in two different modes:
   \begin{itemize}
-  \item $N_{gen}\geq255$: $N_{readout}=255$;
-    \item $N_{gen}<255$: $N_{readout}<255$;
+  \item $N_{gen}\geq255$: $N_{readout}=255$ (\textbf{overflow mode});
+    \item $N_{gen}<255$: $N_{readout}<255$ (\textbf{underflow mode});
   \end{itemize}
       \item Each FPGA has its own generator and pulses from different generators are offset ($\in [0 ,T_{gen}]$) with respect to each other;
-      \item Timing of generator pulses uncorrelated with the beginning of the EW $\rightarrow$ different number of hits in an EW;
       \item Offsets between channels (same digi-FPGA) are about few ns and can be measured;
+      \item Timing of generator pulses uncorrelated with the beginning of the EW $\rightarrow$ different number of hits in an EW;
       \item Channel readout sequence is fixed.
   \end{itemize}
   \vspace{-4mm}
@@ -2460,18 +2460,10 @@ system, pixel telescope, trigger scintillators;
 
 
 
-
-\begin{frame}
-   
-       
-\end{frame}
-
-
-
 \begin{frame}
     \frametitle{Drift tubes in magnetic field}
 
-    \vspace{-4mm}
+    \vspace{-3mm}
     \begin{columns}
         \begin{column}{0.65\framewidth}
             \setlength{\leftmargini}{1.1em}
