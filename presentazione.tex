@@ -530,13 +530,11 @@ Mu2e tracker will be $\delta$-electrons;
     \vspace{0mm}
 
      \begin{itemize}
-    
+        \item $T_{EW}$ = 50 $\mu$s and $f_{gen}$ = 60 kHz;
      \item The distribution of the hit time for channel 0 of digi-FPGA-1 (Left) and channel 2 of digi-FPGA-2 (Right);
-     \item $T_{EW}$ = 50 $\mu$s and $f_{gen}$ = 60 kHz;
-     \item Left distribution is uniform, Right one is non-trivial;
-     \item Different behaviour for different channels in different FPGAs;
+     \item Different behaviour for different channels in different FPGAs: Left distribution is uniform, Right one is non-trivial;
         \item Apparently there are interruptions of channel 2 in the second FPGA;
-        \item Everything can be explained with the $occupancy$ plot.
+        \item This behaviour can be explained with the $occupancy$ plot.
     \end{itemize}
          \end{column}
 \end{columns}   
@@ -564,8 +562,8 @@ Mu2e tracker will be $\delta$-electrons;
  \begin{columns}
     \begin{column}{1.15\framewidth}
      \begin{itemize}
+        \item $T_{EW}$ = 25 $\mu$s and $f_{gen}$ = 60 kHz;
       \item The distribution of the hit time for channel 0 of digi-FPGA-1 (Left) and channel 2 of digi-FPGA-2 (Right);
-          \item $T_{EW}$ = 25 $\mu$s and $f_{gen}$ = 60 kHz;
         \item Same behaviour for different channels in different FPGAs;
         \item No interruptions of channel 2 in the second FPGA.    \end{itemize}
              \end{column}
@@ -685,17 +683,17 @@ Mu2e tracker will be $\delta$-electrons;
 
 
 \begin{frame}
-    \frametitle{Test 1: channel occupancy versus channel ID}
+    \frametitle{Test 1: channel occupancy}
 \vspace{-3mm}
 \begin{columns}
 \begin{column}{1.15\framewidth}
     \setlength{\leftmargini}{1.1em}
  \begin{itemize}
  {\small
-     \item Same test stand: 1 or 2 ROCs and one DTC, plus preamps on the CAL side;
-     \item CAL side digi-FPGA generates calibration pulses, pulsing every 8th channel across 12 RUNs (different starting channel);
-          \item The frequency was set to 50 kHz and  $T_{EW}=$50 $\mu$s, 2 or 3 hits per channel;
-     \item Looking for cross talks, non-uniform occupancy, dead channels.
+     \item Same test stand: 1 or 2 ROCs and one DTC + CAL side preamps;
+     \item  digi-FPGA generates calibration pulses (every 8th channel across 12 RUNs);
+     \item Looking for cross talks, non-uniform occupancy, dead channels;
+          \item The frequency was set to 50 kHz and  $T_{EW}=$50 $\mu$s, 2 or 3 hits per channel.
    }
  \end{itemize}
  \end{column}
@@ -720,20 +718,20 @@ Mu2e tracker will be $\delta$-electrons;
 \end{figure}
  \end{column}
 \end{columns}
- \vspace{-10mm}
+ \vspace{-6mm}
  \begin{columns}
  \begin{column}{1.15\framewidth}
      \setlength{\leftmargini}{1.1em}
  \begin{itemize}
  \item (Left): regular occupancy;
-    \item (Right): 94th channel dead (preamp substituted) and $N_{hits}>3$ in some channels $\rightarrow$ time distribution and inverted waveforms in Test 2.
+    \item (Right): 94th channel dead (preamp substituted) and $N_{hits}>3$ in some channels $\rightarrow$ waveforms shape study in Test 2.
     \end{itemize}
      \end{column}
 \end{columns}
 \end{frame}
 
 \begin{frame}
-\frametitle{Test 1: channel occupancy versus channel ID}
+\frametitle{Test 1: channel occupancy}
 \vspace{-4mm}
 \begin{columns}
 \begin{column}{0.5\framewidth}
@@ -770,20 +768,19 @@ Mu2e tracker will be $\delta$-electrons;
 
 
 \begin{frame}
-    \frametitle{Test 2: analysis of the readout pulses waveforms}
-    \vspace{-3mm}
+    \frametitle{Test 2: analysis of readout waveforms shape}
+    \vspace{-4mm}
     \begin{columns}
 \begin{column}{1.15\framewidth}
     \setlength{\leftmargini}{1.2em}
  \begin{itemize}
  {\small
- \item Same test stand;
   \item Checking signal uniformity among channels within the same ROC or across multiple ROCs, and among different events;
   \item 40 MHz ADC (25 ns sample width) and pulser frequency set to 50 kHz.}
   \end{itemize}
     \end{column}
     \end{columns}
-    \vspace{-2mm}
+    \vspace{0mm}
     \begin{columns}
 \begin{column}{0.5\framewidth}
          \begin{figure}[!h]
@@ -802,7 +799,7 @@ Mu2e tracker will be $\delta$-electrons;
 \end{figure}
 \end{column}
 \end{columns}
-\vspace{-2mm}
+\vspace{-1mm}
     \begin{columns}
 \begin{column}{1.15\framewidth}
     \setlength{\leftmargini}{1.2em}
@@ -818,7 +815,7 @@ Mu2e tracker will be $\delta$-electrons;
 
  
 \begin{frame}
-    \frametitle{Test 2: analysis of the readout pulses waveforms}
+    \frametitle{Test 2: analysis of readout waveforms shape}
     \vspace{-4mm}
     \begin{columns}
 \begin{column}{1.15\framewidth}
@@ -872,7 +869,7 @@ Mu2e tracker will be $\delta$-electrons;
 
 
 \begin{frame}
-    \frametitle{Test 2: analysis of the readout pulses waveforms}
+    \frametitle{Test 2: analysis of readout waveforms shape}
     \vspace{-4mm}
     \begin{columns}
 \begin{column}{1.15\framewidth}
@@ -929,7 +926,7 @@ clock of few ns.}
 
 
 \begin{frame}
-\frametitle{Test 2: analysis of the readout pulses waveforms}
+\frametitle{Test 2: analysis of readout waveforms shape}
         \vspace{-4mm}
     \begin{columns}
 \begin{column}{1.15\framewidth}
@@ -1018,7 +1015,7 @@ across channels.}
 
 \begin{frame}
     \frametitle{First steps towards the station calibration}
-    \vspace{-3mm}
+    \vspace{-4.5mm}
     \begin{columns}
         \begin{column}{1.15\framewidth}
                         \setlength{\leftmargini}{1.2em}
@@ -1028,19 +1025,21 @@ across channels.}
             \end{itemize}
         \end{column}
     \end{columns}
-        \vspace{-1.5mm}
+        \vspace{-0.8mm}
     \begin{columns}
         \begin{column}{0.65\framewidth}
                 \setlength{\leftmargini}{1.2em}
             \begin{itemize}
              {\small 
              \item TDCs measure arrival times $t_1$ and $t_2$;
+             \vspace{0.6mm}
 
                 \item $v$: \textbf{signal propagation velocity};
-    \item $x_{\text{track}}$: \textbf{reconstructed track position along the wire};
-    
-                \item $t_0$ particle crossing, $t_d$ drift time, $L$ straw length, $d_i$ delays by FEE;
-                                          
+                \vspace{0.6mm}
+    \item $x_{\text{track}}$: \textbf{reconstructed track on wire};
+    \vspace{0.6mm}
+                \item \textbf{Calibration}: $v$ from $\Delta t_{12}$ (TDCs) correlated with $x_{\text{track}}$ (\textbf{unbiased});
+                \item $x_{track}$ determined by straw \textbf{"yes or no"} information $\rightarrow$ \textbf{station geometry}.                          
                 }   
             \end{itemize}
         \end{column}
@@ -1052,21 +1051,9 @@ across channels.}
     \Delta & t_{12} = \frac{2x_{\text{track}}-L}{v} +(d_1-d_2)
 \end{aligned}
 \end{equation*}
-\vspace{-3mm}
         \end{column}
     \end{columns}
-    \vspace{-1.5mm}
-    \begin{columns}
-        \begin{column}{1.16\framewidth}
-                        \setlength{\leftmargini}{1.28em}
-            \begin{itemize}
-               {\small 
-                \item \textbf{Calibration}: $v$ from $\Delta t_{12}$ (TDCs) correlated with $x_{\text{track}}$ (\textbf{unbiased});
-                \vspace{-0.5mm}
-               \item $x_{track}$ determined by straw \textbf{"yes or no"} information $\rightarrow$ \textbf{station geometry}.}
-            \end{itemize}
-        \end{column}
-    \end{columns}
+   \vspace{1mm}
     \begin{columns}
         \begin{column}{0.5 \framewidth}
          \vspace{-3mm}
@@ -1077,16 +1064,15 @@ across channels.}
 \end{figure}
         \end{column}
         \begin{column}{0.65 \framewidth}
-        \vspace{-0.5mm}
                                 \setlength{\leftmargini}{0.3em}
             \begin{itemize}
                {\small 
                \item First calibration with \textbf{cosmics};
-               \vspace{-0.5mm}
-               \item Unbiased reconstruction with $horizontal$ $orientation$; 
-                              \vspace{-0.5mm}
+               \vspace{0.6mm}
+               \item $Horizontal$ $\rightarrow$ unbiased reconstruction; 
+                              \vspace{0.6mm}
                \item \textbf{Operational constraints}: gas system (sealing with vertical valves), space, fragility. Designed to be operated \textbf{vertically};
-                 \vspace{-0.5mm}
+                 \vspace{0.6mm}
                \item \textbf{Simulation with vertical station to assess biases and feasibility}.}
             \end{itemize}
         \end{column}
