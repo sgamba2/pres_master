@@ -60,7 +60,7 @@
         \begin{itemize}
             \item The \textbf{Standard Model} (SM) does not predict lepton flavour violation;
             \vspace{1mm}
-            \item The discovery of \textbf{neutrino oscillations} prove that lepton interactions are non-diagonal in flavour; \textcolor{white}{\cite{Bernstein_2013} \cite{Kargiantoulakis_2020} \cite{universe9010054}}
+            \item The discovery of \textbf{neutrino oscillations} proves that lepton interactions are non-diagonal in flavour; \textcolor{white}{\cite{Bernstein_2013} \cite{Kargiantoulakis_2020} \cite{universe9010054}}
             \vspace{1mm}
             \item The SM fails to explain phenomena like neutrino masses and the consequent flavour oscillations;\textcolor{white}{\cite{clfv_signorelli} \cite{bartoszek2015mu2e} \cite{bobbb} \cite{kola}}
             \vspace{1mm}
@@ -96,10 +96,12 @@
                 \vspace{-2mm}
    \begin{columns}
     \begin{column}{0.73\framewidth}
+        \setlength{\leftmargini}{1.5em}
         \begin{itemize}
             \item New Physics (NP) models predict much \textbf{higher rates} of CLFV;
             \vspace{1mm}
-            \item Observing CLFV would provide unambiguous evidence of \textbf{physics beyond the SM};
+            \item Observing CLFV would provide unambiguous evidence of 
+            \\ \textbf{physics beyond the SM};
             \vspace{1mm}
             \item CLFV channels involving muons: $\mu^+ \rightarrow e^+ \gamma$, $\mu^- N \rightarrow e^- N$ and $\mu^+ \rightarrow e^+ e^+ e^-$;
             \vspace{1mm}
@@ -107,7 +109,7 @@
             \begin{itemize}
                 \item Higher momentum signal and better separation from the background;
                 \item Benefits from high intensity beam;
-                \item Better sensitivity to CLFV in a large range of NP scenarios.
+                \item Better sensitivity to CLFV in a large \\ range of NP scenarios.
             \end{itemize}
             \item Current best limit on $\mu^- N \rightarrow e^- N$ by SINDRUM II: $R_{\mu e} < 7 \times 10^{-13}$ (90\% CL).
         \end{itemize}
@@ -115,8 +117,8 @@
     \begin{column}{0.5\framewidth}
         \begin{figure}[h]
             \centering
-            \hspace*{-6ex}
-            \includegraphics[width=\columnwidth]{figures/png/Screenshot_20240912_093047.png}
+            \hspace*{-7.1ex}
+            \includegraphics[width=1.1\columnwidth]{figures/png/Screenshot_20240912_093047.png}
         \end{figure}  
     \end{column}
 \end{columns}
@@ -257,7 +259,7 @@ live window:
     \begin{column}{0.65 \framewidth}
 \textbf{Purpose}:
 \begin{itemize}
-\item momentum measurement with $\Delta p<300$ keV/c FWHM + 950 keV/c energy losses (ST and proton absorber) (DIO). 
+\item momentum measurement with $\Delta p<300$ keV/c FWHM + 950 keV/c energy losses (ST and proton absorber). 
 \end{itemize}
 \textbf{Design}:
 \begin{itemize}
@@ -296,12 +298,17 @@ live window:
          \setlength{\leftmargini}{1em}
          \begin{itemize}
          {\small
-         \item Signal is readout from both ends by  \textbf{preamps} (\textbf{CAL} and \textbf{HV} side);
-         \item Analog signals are sent to the \textbf{DRAC} {\footnotesize(Digitizer Readout \& Assembler Controller)} and processed by 2 \textbf{TDC}s and one \textbf{ADC};
-        \item The 2 digi-FPGA create one data packet for each hit containing the \textbf{two hit times} and \textbf{one waveform};
-        \item Data packets are transferred to the \textbf{ROC} {\footnotesize(Readout Controller)};
-        \item ROC collects, buffer and transfer data from digi-FPGAs to \textbf{DTC} {\footnotesize(Data Transfer Controller)} installed on \textbf{DAQ} computers;
-        \item DTC sends data request to the ROC and sends it to the Event Builder.}
+         \item Signal is readout from both ends by  \textbf{preamps};
+         \vspace{2mm}
+         \item Analog signals are sent to the \\ \textbf{DRAC} and processed by 2 \textbf{TDC}s \\ and one \textbf{ADC};
+         \vspace{2mm}
+        \item The 2 digi-FPGA create one data packet for each hit with \textbf{two hit} \\ \textbf{times} and \textbf{one waveform};
+        \vspace{2mm}
+        \item Data packets sent to \textbf{ROC};
+        \vspace{2mm}
+        \item ROC collects, buffers and transfers data from digi-FPGAs to \textbf{DTC} installed on \textbf{DAQ} computers;
+        \vspace{2mm}
+        \item DTC sends data request to the ROC and sends data packet to the Event Builder.}
          \end{itemize}
     \end{column}
     \begin{column}{0.5\framewidth}
@@ -330,40 +337,34 @@ live window:
 \vspace{-4mm}
 \begin{itemize}
 \item Mu2e is starting detector \textbf{commissioning} and \textbf{calibration};
-     \vspace{2mm}
+     \vspace{4mm}
 \item My work consists of a \textbf{comprehensive study of the Mu2e tracker}:
-\vspace{1.8mm}
+\vspace{3mm}
   \begin{itemize}
     \item \textbf{Vertical Slice Test} (VST). The entire 
 testing chain, from the straws to the readout, to processed data on disk:
-     \vspace{1mm}
+     \vspace{2mm}
  \begin{itemize}
-     \item initial tracker \textbf{DAQ} and \textbf{FEE} testing;
-          \vspace{1mm}
-     \item validation of the \textbf{ROC} readout and buffering;
-          \vspace{1mm}
-     \item study of tracker \textbf{preamps} performance.
+     \item initial tracker \textbf{DAQ} and \textbf{FEE} testing.
      \end{itemize}
-     \vspace{1.8mm}
+     \vspace{3mm}
 
     \item First steps towards the tracker timing \textbf{calibration} with \textbf{cosmics}:
-         \vspace{1mm}
+         \vspace{2mm}
     \begin{itemize}
-            \item determine \textbf{signal propagation} and \textbf{channel-to-channel delay};
-                 \vspace{1mm}
-            \item develop an \textbf{unbiased cosmic track reconstruction} procedure.
+            \item development of a \textbf{cosmic track reconstruction} procedure.
     \end{itemize}
-         \vspace{1.8mm}
+         \vspace{3mm}
 
     \item \textbf{Mu2e Offline}. Pre-pattern recognition studies:
-         \vspace{1mm}
+         \vspace{2mm}
     \begin{itemize}
         \item estimated data volume for Mu2e data-taking 
-is >\textbf{7 PBytes/year};
-     \vspace{1mm}
+is >\textbf{7 PB/year};
+     \vspace{1.5mm}
 \item the \textbf{primary source} of hits in the 
 Mu2e tracker will be $\delta$-electrons;
-     \vspace{1mm}
+     \vspace{1.5mm}
 \item important to identify those hits without losing \textbf{CE efficiency}.
     \end{itemize}
         \end{itemize}
@@ -573,7 +574,7 @@ Mu2e tracker will be $\delta$-electrons;
 
 
 
-\begin{frame}{$Occupancy$ plots}
+\begin{frame}{$Occupancy$}
 \vspace{-4.4mm}
 \begin{columns}
     \begin{column}{0.5 \framewidth}
@@ -607,7 +608,7 @@ Mu2e tracker will be $\delta$-electrons;
         \item channels 0-75: 48 digi-FPGA-1 channels with 3 hits (144 hits) and 27 digi-FPGA-2 channels with 4 hits (108 hits) and 1 with 3 hits (111 hits);
         \item channels 0-85: 48 digi-FPGA-1 channels with 3 hits (144 hits) and 37 digi-FPGA-2 channels with 3 hits (111 hits).}
     \end{itemize}
-    \item  {\small Regular mode (Right): all channels with same occupancy ($N_{hits}<255$).
+    \item  {\small Regular mode (Right): all channels with same occupancy.
     }
    
         \end{itemize}
@@ -616,7 +617,7 @@ Mu2e tracker will be $\delta$-electrons;
 \end{frame}
 
 
-\begin{frame}{Number of hits distribution}
+\begin{frame}{Number of hits}
 \vspace{-10mm}
 \begin{columns}
     \begin{column}{0.5\framewidth}
@@ -1015,32 +1016,33 @@ across channels.}
 
 \begin{frame}
     \frametitle{First steps towards the station calibration}
-    \vspace{-4.5mm}
-    \begin{columns}
-        \begin{column}{1.15\framewidth}
-                        \setlength{\leftmargini}{1.2em}
-            \begin{itemize}
-                {\small    
-             \item \textbf{Calibration goal}: straw longitudinal position resolution $\lesssim$4 cm;}
-            \end{itemize}
-        \end{column}
-    \end{columns}
-        \vspace{-0.8mm}
-    \begin{columns}
+    
+      \begin{columns}
         \begin{column}{0.65\framewidth}
                 \setlength{\leftmargini}{1.2em}
+                \vspace{-5mm}
             \begin{itemize}
              {\small 
+             \item \textbf{Calibration goal}: straw longitudinal position resolution $\lesssim$4 cm;
+             \vspace{0.5mm}
              \item TDCs measure arrival times $t_1$ and $t_2$;
-             \vspace{0.6mm}
+             \vspace{0.5mm}
 
                 \item $v$: \textbf{signal propagation velocity};
-                \vspace{0.6mm}
+                \vspace{0.5mm}
     \item $x_{\text{track}}$: \textbf{reconstructed track on wire};
-    \vspace{0.6mm}
+    \vspace{0.5mm}
                 \item \textbf{Calibration}: $v$ from $\Delta t_{12}$ (TDCs) correlated with $x_{\text{track}}$ (\textbf{unbiased});
                 \item $x_{track}$ determined by straw \textbf{"yes or no"} information $\rightarrow$ \textbf{station geometry}.                          
-                }   
+                } 
+                {\small 
+                \item First calibration with \textbf{cosmics};
+                \vspace{0.5mm}
+                \item $Horizontal$ $\rightarrow$ unbiased reconstruction; 
+                               \vspace{0.5mm}
+                \item \textbf{Operational constraints}: gas system, space, fragility. Designed to be operated \textbf{vertically};
+                  \vspace{0.5mm}
+                \item \textbf{Simulation with vertical station to assess biases and feasibility}.}  
             \end{itemize}
         \end{column}
         \begin{column}{0.48\framewidth}
@@ -1051,32 +1053,15 @@ across channels.}
     \Delta & t_{12} = \frac{2x_{\text{track}}-L}{v} +(d_1-d_2)
 \end{aligned}
 \end{equation*}
-        \end{column}
-    \end{columns}
-   \vspace{1mm}
-    \begin{columns}
-        \begin{column}{0.5 \framewidth}
-         \vspace{-3mm}
-            \begin{figure}[!h]
-    \centering
-    \includegraphics[width =0.8\columnwidth]{figures/png/gassystem.png}
-    \label{fig:gassystem}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width =\columnwidth]{figures/png/gassystem.png}
+\label{fig:gassystem}
 \end{figure}
         \end{column}
-        \begin{column}{0.65 \framewidth}
-                                \setlength{\leftmargini}{0.3em}
-            \begin{itemize}
-               {\small 
-               \item First calibration with \textbf{cosmics};
-               \vspace{0.6mm}
-               \item $Horizontal$ $\rightarrow$ unbiased reconstruction; 
-                              \vspace{0.6mm}
-               \item \textbf{Operational constraints}: gas system (sealing with vertical valves), space, fragility. Designed to be operated \textbf{vertically};
-                 \vspace{0.6mm}
-               \item \textbf{Simulation with vertical station to assess biases and feasibility}.}
-            \end{itemize}
-        \end{column}
     \end{columns}
+  
 \end{frame}
 
 
@@ -1156,7 +1141,7 @@ across channels.}
  \vspace{1.6mm}
 \item 4/4 overlap areas limited to \textbf{panel edges};
  \vspace{1.6mm}
-\item \textbf{Waveform non-linearities};
+\item \textbf{Time walk effects};
  \vspace{1.6mm}
 \item Selection of \textbf{specific
 muon directions};
@@ -1336,7 +1321,7 @@ muon directions};
 
 \begin{frame}
     \frametitle{Introduction}
-    \vspace{-3mm}
+    \vspace{-4mm}
       \begin{columns}
 \begin{column}{1.15\framewidth}
     \setlength{\leftmargini}{1.2em}
@@ -1348,16 +1333,14 @@ muon directions};
         {\small
             \item \textbf{Compton scattering}: interaction of $\gamma$s ($n$ capture) with material;
              \vspace{0.8mm}
-            \item \textbf{$e^\pm$ pairs}: nuclear recoil processes;
+            \item \textbf{$e^\pm$ pairs}: nuclear processes;
                  \vspace{0.8mm}
             \item \textbf{$\delta$-rays}: interaction of high-energy charged particles with material.}
         \end{itemize}
-             \vspace{1.3mm}
+             \vspace{2.8mm}
        {\small \item Mu2e data: $\geq$7 PB/year $\rightarrow$ \textbf{CPU optimization critical};
-            \vspace{1.3mm}
-        \item Hit flagging to avoid sending them to pattern recognition;
-             \vspace{1.3mm}
-        \item Crucial step for several \textbf{physics reasons}:}
+            \vspace{2.8mm}
+        \item Hit flagging is a crucial step for several \textbf{physics reasons}:}
                \vspace{0.8mm}
         \begin{itemize}
         {\small
@@ -1366,15 +1349,15 @@ muon directions};
             \item \textbf{Protons}: complementary source to determine muon stopping rate;
                  \vspace{0.8mm}
             \item \textbf{$\bar{p}$ background}: correct background estimate.}
-                  \vspace{1.3mm}
+                  \vspace{2.8mm}
     \end{itemize}
-    \item {\small\textbf{Data-sample}:}
+    \item {\small\textbf{Data-sample} for pre-pattern recognition studies:}
            \vspace{0.8mm}
     \begin{itemize}
     {\small
-        \item \textbf{CE-1BB}: CE signal + pileup (1BB-$1.6 \times 10^7$ protons/pulse);
+        \item \textbf{CE-1BB}: CE signal + pileup ($1.6 \times 10^7$ protons/pulse);
                \vspace{0.8mm}
-        \item \textbf{CE-2BB}: CE signal + pileup (2BB-$3.9 \times 10^7$ protons/pulse);
+        \item \textbf{CE-2BB}: CE signal + pileup ($3.9 \times 10^7$ protons/pulse);
                \vspace{0.8mm}
      \item \textbf{PBAR-0BB}: $\bar{p}$s and no pileup.}
     \end{itemize}
@@ -1405,21 +1388,19 @@ muon directions};
 \end{figure}
         \end{column}
     \end{columns}
-    \vspace{-5mm}
+    \vspace{-3mm}
     \begin{columns}
         \begin{column}{1.15\framewidth}
     \setlength{\leftmargini}{1.2em}
     \begin{itemize}
     {\small
-            \item Momentum distribution of particles making at least one hit in the tracker (Left: \textbf{CE-1BB}, Right: \textbf{PBAR-0BB})     {\footnotesize(blue) all particles, (orange) $\delta$s, (green) $p$ and $D$, (pink) $e^-$, (cyan) $e^+$, (dark green) CE, (black) $\mu$, (beige) $\pi$};
-            \vspace{1mm}
+            \item Momentum distribution of particles making at least one hit in the tracker (Left: \textbf{CE-1BB}, Right: \textbf{PBAR-0BB});
+            \vspace{2.5mm}
             \item (Left): 75\% of hits by $\delta$-electrons (71\% $e^-$, 4\% $e^+$ - Compton scattering);
-              \vspace{1mm}
+              \vspace{2.5mm}
             \item (Left): bump in the $e^+$ distribution ($N(\mu^+ \rightarrow e^+ )/N(\mu^- \rightarrow e^-) \sim 10^{-3}$ for $\mu$ entering the DS and DIO on IPA should be also $10^{-3}$ wrt $\mu^-$ DIF);
-              \vspace{1mm}
-            \item  (Right): $p\bar{p}$ annihilation in ST $\rightarrow$ multiple tracks with $p \sim 100/200$ MeV/c;
-              \vspace{1mm}
-            \item Reconstructing these tracks helps constrain background.
+              \vspace{2.5mm}
+            \item  (Right): $p\bar{p}$ annihilation in ST $\rightarrow$ multiple tracks with $p \sim 100/200$ MeV/c.
           
 }
            \end{itemize} 
@@ -1432,20 +1413,22 @@ muon directions};
 
 \begin{frame}
     \frametitle{$\delta$-electrons flagging algorithms}
+    \vspace{-1mm}
       \begin{columns}
         \begin{column}{1.15\framewidth}
        {\small Two \textbf{pre-pattern recognition  algorithms} developed in Mu2e Offline:}
     \setlength{\leftmargini}{1.2em}
+    \vspace{0.5mm}
     \begin{itemize}
     {\small   
-    \item \textbf{FlagBkgHits} (FBH). First it finds clusters of hits close in $x-y$ and time and uses an ANN to classify them. Based on $StereoHit$ reconstruction;
-    \item \textbf{DeltaFinder} (DF). Search for hit patterns consistent with $\delta$-electron ones:
+    \item \textbf{FlagBkgHits} (FBH). First it finds clusters of hits close in $x-y$ and time and uses an ANN to classify them. Based on $StereoHit$ reconstruction. Supervised training with CE+pileup dataset;
+    \vspace{0.5mm}
+    \item \textbf{DeltaFinder} (DF):
     }
     \begin{itemize}
-        {\small \item $\delta$ segments in each station ($seed$,  3 or 4 hits cluster in space and time);
-\item  straws intersection determined $\rightarrow$ center of gravity on $x$-$y$; 
-\item $seed$s close in $x$-$y$ and time 
-across stations connected ($\delta$ candidate); 
+        {\small \item $\delta$ segments in each station ($seed$s);
+\item  straws' center of gravity on $x$-$y$; 
+\item $seed$s across stations connected ($\delta$ candidate); 
 \item $p$ candidates ($seed$s with $\bar{E}_{dep}>$ 3 keV).}
     \end{itemize}
     \end{itemize}
@@ -1470,14 +1453,13 @@ across stations connected ($\delta$ candidate);
 \end{figure}
         \end{column}
     \end{columns}
-        \vspace{-3mm}
+        \vspace{-2mm}
       \begin{columns}
         \begin{column}{1.15\framewidth}
     \setlength{\leftmargini}{1.2em}
     \begin{itemize}
     {\small   
-    \item (Left): $\delta$-electrons and CE patterns in the $r-z$ plane;
-    \item (Right): A $\delta$ candidate $seed$.}
+    \item (Left) $\delta$-electrons and CE in the $r-z$ plane, (Right) $\delta$ candidate $seed$.}
     \end{itemize}
     \end{column}
     \end{columns}
@@ -1485,7 +1467,7 @@ across stations connected ($\delta$ candidate);
 
 \begin{frame}
 \frametitle{Performance analysis and comparison}
-           \vspace{-0.5mm}
+           \vspace{-1mm}
   \begin{columns}
         \begin{column}{1.15\framewidth}
        {\small Two levels of comparison:}
@@ -1535,11 +1517,14 @@ across stations connected ($\delta$ candidate);
       {\small  \item (Left): $f_p$ and $f_e \ \rightarrow$ 
 fraction of hits flagged as 
 $p$ and $e^-$;
-\item (Right): distribution of the total (red) 
-        and flagged (green) number of $\mu$ hits as a function of the particle momentum;
+\vspace{1mm}
+\item (Right): total (red) and flagged (green) $\mu$ hits vs the particle momentum;
+\vspace{1mm}
 \item High $\mu$ and $\pi$ $f_p$ $\rightarrow$ low momentum (higher energy deposition as $p$);
+\vspace{1mm}
 \item $Good$ proton candidate $\rightarrow \ \geq 4$
 hits with $E_{dep} >$ 3 keV; 
+\vspace{1mm}
 \item $\epsilon_p$ reduced of 10\%, but $\mu$ and $\pi$ $f_p$ reduced by factor of 2 and 6 $\rightarrow$ next slide.
 }
       \end{itemize}
@@ -1552,25 +1537,34 @@ hits with $E_{dep} >$ 3 keV;
 
 \begin{frame}
     \frametitle{Hit-level comparison}
-    \vspace{-3mm}
+    \vspace{-1mm}
     \begin{columns}
-    \begin{column}{0.5\framewidth}
+    \begin{column}{0.45\framewidth}
     \vspace{-2mm}
         \setlength{\leftmargini}{0.7em}
 \begin{itemize}
 {\small
     \item (Top Tab): \textbf{PBAR}. $\mu$ and $\pi$ $f_{p,FBH}$ 4x and 3.3x higher;
       \vspace{-0.5mm}
-      \item FBH: \textbf{supervised training} with CE+pileup dataset;
-      \vspace{-0.5mm}
-      \item $\pi$: higher momenta $\rightarrow$ smaller curvature $\rightarrow$ higher $f_e$;
+      \item $\pi$: higher momenta;
       \vspace{-0.5mm}
       \item (Bottom Tab): \textbf{CE-1BB}. Same results for \textbf{CE-2BB} within 1\%;
-
+      \vspace{-0.5mm}
+      \item \textbf{70\% more CE hits flagged} as $\delta$s by FBH wrt DF;
+      \vspace{-0.5mm} 
+      \item \textbf{No $p$ flagging comparison} (FBH identifies only high $E_{dep}$ particles);
+      \vspace{-0.5mm}
+      \item (Left): $e^-$ and $e^+$ $f_e$ vs momentum (FBH);
+           \vspace{-0.5mm}
+           \item 1-2 MeV: Compton;
+           \vspace{-0.5mm}
+           \item >2 MeV: larger $xy$ spread;
+                      \vspace{-0.5mm}
+           \item (Right): $e^-$ (pink) and $e^+$ (black) $E$ distribution \\ ($E<2$ MeV).
     }
 \end{itemize}
         \end{column}
-         \begin{column}{0.6\framewidth}
+         \begin{column}{0.65\framewidth}
         \begin{table}[h!]
         \centering
         \hspace*{-0.5em}
@@ -1609,54 +1603,29 @@ hits with $E_{dep} >$ 3 keV;
     \end{tabular}
     \label{tab:2bbcele}
     \end{table}
-  
+    \begin{columns}
+        \begin{column}{0.33\framewidth}
+    \begin{figure}[!h]
+        \centering
+        \hspace*{-1em}
+        \includegraphics[width =1.2\columnwidth]{figures/png/Screenshot_20240818_155835.png}
+       \label{fig:0pbarbefore}
+\end{figure}
+\end{column}
+  \begin{column}{0.32\framewidth}
+    \begin{figure}[!h]
+        \centering
+                    \hspace*{-0.2em}
+        \includegraphics[width =1.\columnwidth]{figures/png/Screenshot_20240820_154854.png}
+       \label{fig:0pbarbefore}
+\end{figure}
         \end{column}
     \end{columns}
-    \vspace{-4.mm}
-          \begin{columns}
-      \begin{column}{1.15\framewidth}
-    \setlength{\leftmargini}{0.9em}
-    \begin{itemize}
-      {\small  \item \textbf{70\% more CE hits flagged} as $\delta$-electrons by FBH with respect to DF; 
-      \vspace{-0.5mm}
-      \item \textbf{No $p$ flagging comparison} (FBH identifies only high $E_{dep}$ particles).
-}
-      \end{itemize}
-      \end{column}
-      \end{columns}
-          \vspace{-3.7mm}
-\begin{columns}
- 
-    \begin{column}{0.33\framewidth}
-        \begin{figure}[!h]
-            \centering
-            \hspace*{-1em}
-            \includegraphics[width =1.2\columnwidth]{figures/png/Screenshot_20240818_155835.png}
-           \label{fig:0pbarbefore}
-\end{figure}
-    \end{column}
-      \begin{column}{0.33\framewidth}
-        \begin{figure}[!h]
-            \centering
-                        \hspace*{-0.2em}
-            \includegraphics[width =1.\columnwidth]{figures/png/Screenshot_20240820_154854.png}
-           \label{fig:0pbarbefore}
-\end{figure}
-    \end{column}
-       \begin{column}{0.4\framewidth}
-        \setlength{\leftmargini}{0.5em}
-        \begin{itemize}
-           {\small 
-           \item (Left): $e^-$ and $e^+$ $f_e$ vs momentum (FBH);
-           \vspace{-0.5mm}
-           \item 1-2 MeV: $\delta$s with 1/2 hits per station (DF>3hits);
-                      \vspace{-0.5mm}
-           \item >2 MeV: larger $xy$ spread;
-                      \vspace{-4.5mm}
-           \item (Right): $e^-$ (pink) and $e^+$ (black, no Compton) $E$ distribution ($E<2$ MeV).}
-        \end{itemize}
-    \end{column}
+\end{column}
 \end{columns}
+
+       
+   
    
 \end{frame}
 
@@ -1810,7 +1779,7 @@ cross-talk between the channels, and waveform patterns study.
  \item \textbf{Pre-pattern recognition study} to flag $\delta$-electrons:
   \vspace{0.4mm}
   \begin{itemize}
-  \item \textbf{Hit-level}: FBH flags 70\% more CE hits, same performance for $\delta$s, no possible $p$ flag comparison, FBH not trained one $\bar{p}$ data sample;
+  \item \textbf{Hit-level}: FBH flags 70\% more CE hits, same performance for $\delta$s, no possible $p$ flag comparison, FBH not trained on $\bar{p}$ data sample;
   \item \textbf{High-level}: same recostruction performance for CE signal;
   \item  \textbf{Timing}: 0.13, 0.39 ms/ev (1BB, 2BB) more for DF vs 5 ms/ev expected;
      \item \textbf{Important to improve $TimeCluster$ efficiency}.
