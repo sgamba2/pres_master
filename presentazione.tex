@@ -1329,36 +1329,36 @@ muon directions};
     {\small
         \item Most of \textbf{tracker hits} are $e^-$ and $e^+$ with \textbf{$E<20$ MeV} - \textbf{$\delta$-electrons}:}
         \begin{itemize}
-          \vspace{0.8mm}
+           \vspace{0.7mm}
         {\small
             \item \textbf{Compton scattering}: interaction of $\gamma$s ($n$ capture) with material;
-             \vspace{0.8mm}
+              \vspace{0.7mm}
             \item \textbf{$e^\pm$ pairs}: nuclear processes;
-                 \vspace{0.8mm}
+                  \vspace{0.7mm}
             \item \textbf{$\delta$-rays}: interaction of high-energy charged particles with material.}
         \end{itemize}
              \vspace{2.8mm}
        {\small \item Mu2e data: $\geq$7 PB/year $\rightarrow$ \textbf{CPU optimization critical};
             \vspace{2.8mm}
         \item Hit flagging is a crucial step for several \textbf{physics reasons}:}
-               \vspace{0.8mm}
+                \vspace{0.7mm}
         \begin{itemize}
         {\small
             \item \textbf{CE track reconstruction efficiency};
-                 \vspace{0.8mm}
+                  \vspace{0.7mm}
             \item \textbf{Protons}: complementary source to determine muon stopping rate;
-                 \vspace{0.8mm}
+                  \vspace{0.7mm}
             \item \textbf{$\bar{p}$ background}: correct background estimate.}
                   \vspace{2.8mm}
     \end{itemize}
     \item {\small\textbf{Data-sample} for pre-pattern recognition studies:}
-           \vspace{0.8mm}
+            \vspace{0.7mm}
     \begin{itemize}
     {\small
         \item \textbf{CE-1BB}: CE signal + pileup ($1.6 \times 10^7$ protons/pulse);
-               \vspace{0.8mm}
+                \vspace{0.7mm}
         \item \textbf{CE-2BB}: CE signal + pileup ($3.9 \times 10^7$ protons/pulse);
-               \vspace{0.8mm}
+                \vspace{0.7mm}
      \item \textbf{PBAR-0BB}: $\bar{p}$s and no pileup.}
     \end{itemize}
      \end{itemize}
@@ -1817,19 +1817,7 @@ cross-talk between the channels, and waveform patterns study.
 \begin{frame}
     \frametitle{Beyond the SM}
     \vspace{-3mm}
-    \begin{columns}
-        \begin{column}{0.5\framewidth}
-    \begin{figure}[!h]
-        \centering
-        \includegraphics[width =0.55\columnwidth]{figures/png/Screenshot_20240218_105920.png}
-        \label{fig:susy}
-        \end{figure}
-    \end{column}
-    \begin{column}{0.5\framewidth}
-   {\small SUSY contribution to $l_i \rightarrow l_j\gamma$ via $slepton$ }
-    \end{column}
-\end{columns}
-\vspace{-3mm}
+  
         \begin{columns}
             \begin{column}{1.15\framewidth}
             \setlength{\leftmargini}{1.1em}
@@ -1839,28 +1827,33 @@ cross-talk between the channels, and waveform patterns study.
         {\footnotesize \item particle with superpartner (different spin), lepton $\rightarrow \ slepton$;
         \item no common mass eigenstate base $\rightarrow$ 
         $slepton$ superposition of flavours;
-        \item CLFV suppression $\rightarrow$ separation of the $\nu$ and $W$ masses;
+        \item CLFV suppression mitigated by $\nu$ and $W$ superpartners;
         \item SUSY breaking at electroweak scale ($\sim 10^2$ GeV) $\rightarrow$ observable 
         violation. 
         }
     \end{itemize}
     {\footnotesize  \item \textbf{Two Higgs Doublet model}:}
     \begin{itemize}
-        {\footnotesize  \item  two Higgs bosons;
-        \item non-zero off-diagonal terms $\rightarrow$ flavour violating Yukawa couplings}
+        {\footnotesize  \item  two Higgs bosons each interacting with fermions;
+        \item non-zero-off-diagonal terms $\rightarrow$ flavour violating Yukawa couplings.}
     \end{itemize}
-    {\footnotesize  \item \textbf{Leptoquark models}}
+    {\footnotesize  \item \textbf{Leptoquark models}:}
     \begin{itemize}
-        {\footnotesize   \item LQ has both a baryon and lepton number. 
+        {\footnotesize   \item LQ has both a baryon and lepton number; 
         \item quark and lepton sectors are unified $\rightarrow$ direct coupling via LQ exchange;
         \item specific CLFV processes are mediated by LQs.}
 
     \end{itemize}
     {\footnotesize  \item  \textbf{Additional Neutral Gauge Boson}: }
     \begin{itemize}
-        {\footnotesize   \item Gauge boson mixes with SM neutral Gauge boson $\rightarrow$
-        two mass eigenstates ($Z$, $Z'$). CLFV from off-diagonal terms in neutral
-        current couplings to fermions.}
+        {\footnotesize   
+        \item lower energies: gauge groups break down to the 
+        direct product of the SM Gauge group $SU(3) \times SU(2) \times U(1)$ 
+        along with an additional $U(1)$ factor;
+        \item neutral gauge boson mixes with SM neutral Gauge boson;
+        \item two mass eigenstates ($Z$, $Z'$);
+        \item off-diagonal terms in neutral current couplings 
+        to fermions can lead to flavour-changing couplings to $Z$ and $Z'$.}
 
     \end{itemize}
 
@@ -1876,6 +1869,18 @@ cross-talk between the channels, and waveform patterns study.
         \centering
         \includegraphics[width=1.\textwidth]{figures/png/Screenshot_20240927_131322.png}
     \end{figure} 
+    \begin{columns}
+        \begin{column}{0.5\framewidth}
+    \begin{figure}[!h]
+        \centering
+        \includegraphics[width =0.55\columnwidth]{figures/png/Screenshot_20240218_105920.png}
+        \label{fig:susy}
+        \end{figure}
+    \end{column}
+    \begin{column}{0.5\framewidth}
+   {\small SUSY contribution to $l_i \rightarrow l_j\gamma$ via $slepton$ }
+    \end{column}
+\end{columns}
 \end{frame}
 
 
@@ -1892,28 +1897,42 @@ cross-talk between the channels, and waveform patterns study.
      \setlength{\leftmargini}{1.1em}
     
         \begin{itemize}
-       {\small     \item $\mu$s: most promising channel ($\mu^+ \rightarrow e^+ \gamma$, $\mu^- N \rightarrow e^- N$ and $\mu^+ \rightarrow e^+ e^+ e^-$);
+       {\small   
        \item $\mu$ production favored in $\pi$ and $K$ decays by hadronic interactions;
+       \vspace{0.9mm}
        \item Long lifetime $\rightarrow$ muon beams;
+       \vspace{0.9mm}
        \item Small mass: limited number of decay modes available;
+       \vspace{0.9mm}
        \item $\mu^+ \rightarrow e^+ \gamma$:
+        \vspace{0.7mm}
        }
        \begin{itemize}
-        {\small \item $e^-$ and $\gamma$ (52.8 MeV each and simultaneous);
-        \item positive muons $\rightarrow$ no nuclear capture;
+        {\small \item $e^-$ and $\gamma$ (52.8 MeV back-to-back);
+         \vspace{0.7mm}
+        \item $ \mu^+ \ \rightarrow$ no nuclear capture;
+         \vspace{0.7mm}
         \item Radiative Muon Decay $\mu^+ \rightarrow e^+ \nu_e \bar{\nu}_\mu \gamma$;
-        \item Accidental coincidence of $\mu^+ \rightarrow e^+ \nu_e \bar{\nu}_\mu$ with a $\gamma$; 
-        \item Both backgrounds depend directly on $\Gamma_\mu \ \rightarrow$ continuous beam;
+         \vspace{0.7mm}
+        \item Accidental Coincidence of $\mu^+ \rightarrow e^+ \nu_e \bar{\nu}_\mu$ with a $\gamma$; 
+         \vspace{0.7mm}
+        \item Continuous beam.
         }
        \end{itemize}
+       \vspace{0.9mm}
        \item $\mu^+ \rightarrow e^+ e^- e^+$:
+        \vspace{0.7mm}
        \begin{itemize}
-        {\small \item simultaneous 2 $e^+$ and 1 $e^-$ with total energy equal to the $M_\mu$;
-        \item momentum range from few MeV to $M_\mu \ \rightarrow$ excellent tracker resolution;
-        \item Radiative Muon Decay $\mu^+ \rightarrow e^+ \nu_e \bar{\nu}_\mu \gamma$ with internal conversion $\mu^+ \rightarrow e^+ e^+ e^- \nu_e \bar{\nu}_\mu$;
-        \item coincidence of one Michel decay with a $e^+e^-$ pair (1-MD) or 
-        two Michel decays with a single $e^-$ (2-MD);
-        \item continuous beam is preferred.
+        {\small \item 2 $e^+$ and 1 $e^-$ with total energy equal to the $M_\mu$;
+         \vspace{0.7mm}
+        \item Momentum range from few MeV to $M_\mu/2 \ \rightarrow$ tracker resolution;
+         \vspace{0.7mm}
+        \item Radiative Muon Decay $\mu^+ \rightarrow e^+ \nu_e \bar{\nu}_\mu \gamma$ with internal conversion;
+         \vspace{0.7mm}
+        \item coincidence of one Michel decay with $e^+e^-$ pair (1-MD) or 
+        two Michel decays with $e^+$ (2-MD);
+         \vspace{0.7mm}
+        \item Continuous beam.
 
         }
        \end{itemize}
@@ -1921,11 +1940,11 @@ cross-talk between the channels, and waveform patterns study.
     \end{column}
 \end{columns}
 \end{frame}
-\begin{frame}{Charged Lepton Flavour Violation}
+\begin{frame}{Muon channels}
     \vspace{-1mm}
     \setlength{\leftmargini}{0em}
     \begin{itemize}
-    \item \textbf{EFT} Lagrangian parametrisation (model-indipendent): $\Lambda$ is the effective mass scale and $\kappa$ controls the relative contribution of the dipole moment term and the four fermion term.
+    \item \textbf{EFT} Lagrangian parametrisation (model-indipendent): $\Lambda$ is the effective mass scale and $\kappa$ controls the relative contribution of the dipole moment term and the contact term.
     \end{itemize}
     \begin{equation*}\label{LCF}
     \mathscr{L}_{C L F V}= & \frac{m_\mu}{(1+\kappa) \Lambda^2} \bar{\mu}_R \sigma_{\mu \nu} e_L F^{\mu \nu}+ \frac{\kappa}{(1+\kappa) \Lambda^2} \bar{\mu}_L \gamma_\mu e_L\left(\sum_{q=u, d} \bar{q}_L \gamma^\mu \bar{q}_L\right)
@@ -1967,19 +1986,29 @@ cross-talk between the channels, and waveform patterns study.
    {\small     \item  \textbf{MEG}:}
          \begin{itemize}
              {\small 
-            \item anti-bottle $B$ that decreases uniformly from centre, pushing particles away; 
-            \item LXe detector for $e^+$ and $\gamma$ tracking;
-            \item low energy $e^+$ discarded by placing detector far from magnet axis;
-            \item polyethylene target to stop $\mu$ in the center of the magnet;
-            \item drift chamber and timing counters to measure the $p_{e^+}$.   }
+             \item polyethylene target to stop $\mu$s;
+             \vspace{0.5mm}
+            \item anti-bottle $B$ decreases uniformly from centre, pushing particles away; 
+            \vspace{0.5mm}
+            \item low energy $e^+$ discarded $\rightarrow$ detector far from magnet axis;
+            \vspace{0.5mm}
+            \item drift chamber and timing counters to measure the $p_{e^+}$ and timing;
+            \vspace{0.5mm}
+            \item LXe detector for $E_e$ and $E_\gamma$.
+            }
    \end{itemize}
    {\small      \item  \textbf{MEG II}:}
                \begin{itemize}
                 {\small \item to reduce the accidental background;
+                \vspace{0.5mm}
                 \item muon flux increased ({\footnotesize$7 \times 10^7 \ \mu^+$/s});
+                \vspace{0.5mm}
                 \item thinner but more inclined ST;
+                \vspace{0.5mm}
                 \item new cylindrical drift chamber (higher granularity and transparency);
+                \vspace{0.5mm}
                 \item pixellated-TC;
+                \vspace{0.5mm}
                 \item Radiative Decay Counter (low angle $e^+$).
                 }
                 \end{itemize}
@@ -2013,7 +2042,9 @@ cross-talk between the channels, and waveform patterns study.
             {\small \item  double cone stopping target in the 
             middle of five concentric multi-wire proportional chambers 
             surrounded by plastic scintillator counters;
+            \vspace{1mm}
             \item solenoidal magnetic field;
+            \vspace{1mm}
             \item momentum resolution at the level of $\sim$1 MeV, 
             timing resolution $\leq$1 ns and a vertex resolution of $\sim$1 cm.
             }
@@ -2021,12 +2052,13 @@ cross-talk between the channels, and waveform patterns study.
    {\small     \item \textbf{Mu3e}: 
    }
    \begin{itemize}
-    {\small \item  goal of SES=$10^{-16}$;
+    {\small \item  goal of SES$\sim 10^{-16}$;
+    \vspace{1mm}
     \item muons stopped on a thin hollow double-cone Mylar target;
+    \vspace{1mm}
     \item 2 m cylinder detector placed inside a 1.5 T magnetic field in 5 sections;
-    \item central station: pixel detectors and scintillating fiber;
-    \item 4 stations: pixel
-    sensors and scintillator.
+    \vspace{1mm}
+    \item pixel detectors and scintillating fiber.
     }
 \end{itemize}
 
@@ -2083,10 +2115,8 @@ cross-talk between the channels, and waveform patterns study.
     {\small  
     \item cylindrical structure;
     \item target in the middle of the detector;
-    \item drift chambers;
-    \item CO$_2$-C$_4$H$_10$ and He-C$_4$H$_10$ trackers; 
-    \item plastic scintillators and Cherenkov;
-    \item two hodoscopes at tracker ends;
+    \item 2 drift chambers (CO$_2$-C$_4$H$_10$ and He-C$_4$H$_10$); 
+    \item plastic scintillators and Cherenkov for timing and triggering;
     \item stopped $\mu$: Ge(Li) detector.
     }
 \end{itemize}
@@ -2145,14 +2175,23 @@ cross-talk between the channels, and waveform patterns study.
     
         \begin{itemize}
        {\small     \item  $\tau$: promising source of CLFV decays;
+       \vspace{1mm}
        \item Large mass ($m_\tau$ $\sim$ 1.777 GeV) $\rightarrow$ multiple CLFV channels;
+       \vspace{1mm}
+
        \item $\tau \rightarrow l \gamma$ (radiative decay), $\tau \rightarrow 3l$ (three-body decay) 
        and $\tau\rightarrow l \ h$;
-            \item Higher predicted $BR$, wrt $\mu$s ($(\frac{m_\tau}{m_\mu})^\alpha$);
+       \vspace{1mm}
+
             \item No beams $\rightarrow \ \tau_\tau \ \sim$ 2.9 $\times$ 10$^{-13}$ s;
+            \vspace{1mm}
+
 \item    Large detectors with good PID, tracking, calorimetry, hermeticity required; 
-\item Low number of detectable $\tau$s;
+\vspace{1mm}
+
 \item $\tau^+ \tau^-$ produced by $\Upsilon(4s)$ resonance at $\sqrt{s}=10.58$ GeV;
+\vspace{1mm}
+
         \item Wide-range calibrations for detectors.  
        }
     \end{itemize}
@@ -2191,7 +2230,7 @@ cross-talk between the channels, and waveform patterns study.
         $\tau \ \rightarrow \ \mu \ \mu  \ \mu$ & $2.1 \times 10^{-8}$ & 90\% & Belle & 2010  \\
         \hline
         \end{tabular}
-        \caption{Experimental upper limits for a variety of CLFV processes of leptons.}
+        \caption{Experimental upper limits for CLFV processes (leptons).}
         \label{tab:upperlimits}
         \end{table}
     \end{center}
@@ -2250,21 +2289,19 @@ cross-talk between the channels, and waveform patterns study.
 \begin{columns}
  \begin{column}{0.65\framewidth}
  \setlength{\leftmargini}{1.1em}
-
+ \vspace{-3mm}
     \begin{itemize}
    {\small     \item Lower RMC background. Photon endpoint: {\footnotesize $k_{max} = m_\mu c^2 - |E_b| - E_{rec} - \Delta M$ }
         \\
-        $\sim$101.9 MeV, $\sim$3.1 MeV below CE; 
+        $\sim$101.9 MeV; 
+        \vspace{3mm}
+\item Long lifetime: better separation between prompt backgrounds and live window; 
 
-\item (Top): quite long lifetime, allowing separation between prompt backgrounds and live window; 
-
-
-\item (Bottom): DIO endpoint dependence on nucleus type. 
-Al $\rightarrow$ high endpoint. Higher-$Z$ nuclei $\rightarrow$ lower endpoint, minimizing background contribution;
-
-\item Conversion $BR$ depends on the ST material. Comparison of conversion $BR$s on different nuclei 
-normalized to aluminum $\rightarrow$ dominating 
-operator type. Materials with higher $Z$ $\rightarrow$ better model differentiation (Mu2e-II Ti);
+\vspace{3mm}
+\item High Al DIO endpoint: Higher-$Z$ nuclei $\rightarrow$ lower endpoint, minimizing background contribution;
+\vspace{3mm}
+\item Conversion $BR$ depends on the ST material. Materials with higher $Z$ $\rightarrow$ better model differentiation (Mu2e-II: Ti);
+\vspace{3mm}
 \item Available in required size/shape/thickness, low costs and chemically stable.}
     \end{itemize}
 \end{column}   
