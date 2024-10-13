@@ -215,40 +215,6 @@ live window:
 \item \textbf{Detector Solenoid}: Stopping Target, $p$ absorber and detectors.
         \end{itemize}
 \end{frame}
-\begin{frame}
-    \frametitle{The electromagnetic calorimeter}
-    \begin{columns}
-            \begin{column}{0.65\framewidth}
-      Calorimeter is vital for:
-      \begin{itemize}
-          \item \textbf{PID} ($E/p$);
-          \item Seed for \textbf{track reconstruction};
-          \item Fast online \textbf{trigger} filter.
-      \end{itemize}
-      \textbf{Design}:
-      \begin{itemize}
-        \item 2 hollow disks of crystals, 70 cm apart;
-          \item 2 $\times$ 674 CsI crystals per disk, each coupled to 2 SiPMs.
-      \end{itemize}
-      \textbf{Performance}:
-      \begin{itemize}
-          \item $\sigma_E/E \sim$ 10\%;
-          \item $\sigma_{xy}\sim$ 6 mm;
-          \item $\sigma_t < 500$ ps.
-      \end{itemize}
-               \end{column}
-        \begin{column}{0.5\framewidth}
-            \begin{figure}[h]
-            \centering
-            \includegraphics[width=\columnwidth ]{figures/png/Screenshot_20240322_121000.png}
-        \end{figure}
-              \begin{figure}[h]
-            \centering
-            \includegraphics[width=\columnwidth ]{figures/png/Screenshot_20240706_151533.png}
-        \end{figure}
-        \end{column}
-    \end{columns}
-\end{frame}
 
 \begin{frame}
     \frametitle{The straw tracker}
@@ -488,7 +454,7 @@ Mu2e tracker will be $\delta$-electrons.
 \item Pulses are generated in each channel following the readout sequence;
 \vspace{0.8mm}
  \item The procedure \textit{continues} until all hits 
- have been $readout$, or $N_{hits}>255$. }
+ have been $readout$, or $N_{read}>255$. }
 \end{itemize}
    \end{column}
    \begin{column}{0.5\framewidth}
@@ -656,57 +622,24 @@ Mu2e tracker will be $\delta$-electrons.
 
 \begin{frame}
     \frametitle{Test 1: channel occupancy}
-\vspace{-3mm}
-\begin{columns}
+    \vspace{-3mm}
+    \begin{columns}
 \begin{column}{1.15\framewidth}
-    \setlength{\leftmargini}{1.1em}
+    \setlength{\leftmargini}{1.2em}
  \begin{itemize}
- {\small
-     \item Same test stand: 1 or 2 ROCs and one DTC + CAL side preamps;
-     \item  Calibration pulses (every 8th channel across 12 RUNs): cross talks, non-uniform occupancy, dead channels.   }
- \end{itemize}
- \end{column}
-  \end{columns}
-   \begin{columns}
- \begin{column}{0.5\framewidth}
-     \begin{figure}[!h]
-      \centering
-      \includegraphics[width=\columnwidth]{figures/pdf/run105421_nh_vs_ch.pdf}
-     \label{fig:normalhits}
-\end{figure}
- \begin{itemize}
- \end{itemize}
- \end{column}
-  \begin{column}{0.5\framewidth}
-     \begin{figure}[!h]
-      \centering
-      \vspace{-3mm}
-      \includegraphics[width=\columnwidth]{figures/pdf/run105346_nh_vs_ch.pdf}
-     \label{fig:normalhits}
-\end{figure}
- \end{column}
-\end{columns}
- \vspace{-6mm}
- \begin{columns}
- \begin{column}{1.15\framewidth}
-     \setlength{\leftmargini}{1.1em}
- \begin{itemize}
- \item (Left): regular occupancy;
-    \item (Right): 94th channel dead (preamp substituted) and $N_{hits}>3$ in some channels $\rightarrow$ waveforms shape study in Test 2.
-    \end{itemize}
-     \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}
-\frametitle{Test 1: channel occupancy}
-\vspace{-4mm}
-\begin{columns}
+{\footnotesize  \item Same test stand: 1 or 2 ROCs and one DTC + CAL side preamps;
+\vspace{-0.7mm}
+\item  Calibration pulses (every 8th channel across 12 RUNs): cross talks.}
+  \end{itemize}
+    \end{column}
+    \end{columns}
+        \vspace{-3mm}
+    \begin{columns}
 \begin{column}{0.5\framewidth}
          \begin{figure}[!h]
       \centering
       \hspace*{-2em}
-      \includegraphics[width=1.1\columnwidth]{figures/pdf/run105420_nh_vs_ch.pdf}
+      \includegraphics[width=0.95\columnwidth]{figures/pdf/run105421_nh_vs_ch.pdf}
      \label{fig:normalhits}
 \end{figure}
 \end{column}
@@ -714,23 +647,50 @@ Mu2e tracker will be $\delta$-electrons.
       \begin{figure}[!h]
       \centering
             \hspace*{-1em}
-\includegraphics[angle=90,width=1.1\columnwidth]{figures/jpg/photo_6028424923279639562_y.jpg}
+\includegraphics[width=0.95\columnwidth]{figures/pdf/run105420_nh_vs_ch.pdf}
      \label{fig:normalhits}
 \end{figure}
 \end{column}
 \end{columns}
-\begin{columns}
-\begin{column}{1.15\framewidth}
-    \setlength{\leftmargini}{1.2em}
- \begin{itemize}
-  \item (Left): occupancy plot with cross talks in first odd channels and only asymmetric (e.g. 3$\rightarrow$5, not seen 3$\rightarrow$1); 
-\item (Right): preamp boards are mounted vertically and odd channels are those on the PCB board;
-\item The distance between the first channels is slightly lower;
-\item The solution to these cross talks is still object of study.
- \end{itemize}
+\vspace{-1.5mm}
+    \begin{columns}
+    \begin{column}{0.63\framewidth}
+        \setlength{\leftmargini}{1.1em}
+      \begin{itemize}
+ {\footnotesize
+ \item (Left): regular occupancy;
+ \vspace{-0.3mm}
+ \item (Top Right): cross talks in first odd \\ channels and only asymmetric \\ (e.g. 3$\rightarrow$5, not seen 3$\rightarrow$1); 
+ \vspace{-0.3mm}
+ \item (Bottom Right): vertical preamp boards \\ and odd channels on the AMB board;
+ \vspace{-0.3mm}
+ \item First channels are narrower $\rightarrow$ still \\ object of study;
+ \vspace{-1mm}
+ \item Dead channels $\rightarrow$ preamp substituted.}
+
+\end{itemize}
+\end{column}
+\begin{column}{0.5\framewidth}
+         \begin{figure}[!h]
+      \centering
+      \hspace*{-2em}
+      \includegraphics[angle=90,width=1.1\columnwidth]{figures/jpg/photo_6028424923279639562_y.jpg}
+     \label{fig:normalhits}
+\end{figure}
 \end{column}
 \end{columns}
 \end{frame}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -821,7 +781,8 @@ Mu2e tracker will be $\delta$-electrons.
  \item (Left): dips of specific depths 
  \\ (64, 128 or 192) $\rightarrow$ delays 
  \\ between FPGA blocks;
-\item (Right): inverted waveform $\rightarrow \Delta t $ distribution peaked in 16 $\mu$s (regular) and 4 $\mu$s (inverted). Trigger on trailing edge of 4 $\mu$s long input pulses.}
+\item (Right): inverted waveform $\rightarrow \Delta t $ distribution peaked in 16 $\mu$s (regular) and 4 $\mu$s (inverted). Trigger on trailing edge of 4 $\mu$s long input pulses;
+\item Occupancy distribution with $N_{hits}> 3$ per channel (preamp substituted).}
 
 \end{itemize}
 \end{column}
@@ -2193,6 +2154,40 @@ cross-talk, and waveform patterns study.}
 
 \end{frame}
 
+\begin{frame}
+    \frametitle{The electromagnetic calorimeter}
+    \begin{columns}
+            \begin{column}{0.65\framewidth}
+      Calorimeter is vital for:
+      \begin{itemize}
+          \item \textbf{PID} ($E/p$);
+          \item Seed for \textbf{track reconstruction};
+          \item Fast online \textbf{trigger} filter.
+      \end{itemize}
+      \textbf{Design}:
+      \begin{itemize}
+        \item 2 hollow disks of crystals, 70 cm apart;
+          \item 2 $\times$ 674 CsI crystals per disk, each coupled to 2 SiPMs.
+      \end{itemize}
+      \textbf{Performance}:
+      \begin{itemize}
+          \item $\sigma_E/E \sim$ 10\%;
+          \item $\sigma_{xy}\sim$ 6 mm;
+          \item $\sigma_t < 500$ ps.
+      \end{itemize}
+               \end{column}
+        \begin{column}{0.5\framewidth}
+            \begin{figure}[h]
+            \centering
+            \includegraphics[width=\columnwidth ]{figures/png/Screenshot_20240322_121000.png}
+        \end{figure}
+              \begin{figure}[h]
+            \centering
+            \includegraphics[width=\columnwidth ]{figures/png/Screenshot_20240706_151533.png}
+        \end{figure}
+        \end{column}
+    \end{columns}
+\end{frame}
 
 \begin{frame}
     \frametitle{Extinction monitor}
@@ -2575,8 +2570,42 @@ system, pixel telescope;
         \end{columns}
     \end{frame}
 
-
+    \begin{frame}
+        \frametitle{Test 1: channel occupancy}
+    \vspace{-3mm}
+    \begin{columns}
+    \begin{column}{1.15\framewidth}
+        \setlength{\leftmargini}{1.1em}
+     \begin{itemize}
+     {\small
+        
+         \item  Non-uniform occupancy, dead channels.   }
+     \end{itemize}
+     \end{column}
+      \end{columns}
+       
+         \begin{figure}[!h]
+          \centering
+         
+          \includegraphics[width=0.5\textwidth]{figures/pdf/run105346_nh_vs_ch.pdf}
+         \label{fig:normalhits}
+    \end{figure}
+   
+     \begin{columns}
+     \begin{column}{1.15\framewidth}
+         \setlength{\leftmargini}{1.1em}
+     \begin{itemize}
+   
+        \item 94th channel dead (preamp substituted) and $N_{hits}>3$ in some channels $\rightarrow$ waveforms shape study in Test 2.
+        \end{itemize}
+         \end{column}
+    \end{columns}
+    \end{frame}
 \begin{frame}
+
+
+
+
     \frametitle{Test 2: analysis of readout waveforms shape}
             \vspace{-4mm}
         \begin{columns}
