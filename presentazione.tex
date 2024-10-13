@@ -180,7 +180,7 @@
  \item Radiative Muon Capture $\mu^- N \rightarrow\gamma \nu_\mu N'^* $ {\footnotesize($<0.0024$ evs/RunI)}.
 \end{itemize}
 \item \textbf{Delayed processes from $\bar{p}$} $\rightarrow$ absorbers in the TS {\footnotesize($\approx0.010$ evs/RunI)};
-\item \textbf{Prompt processes} $\rightarrow$ pulsed beam + delayed
+\item \textbf{Prompt processes} $\rightarrow$ pulsed $p$ beam (1.7 $\mu$s) + delayed
 live window:
 \begin{itemize}
     \item Radiative Pion Capture $\pi^- N \rightarrow \gamma N' ^*$ {\footnotesize($\approx0.010$ evs/RunI)};
@@ -237,7 +237,7 @@ live window:
       \begin{itemize}
           \item $\sigma_E/E \sim$ 10\%;
           \item $\sigma_{xy}\sim$ 6 mm;
-          \item $\Delta t < 500$ ps.
+          \item $\sigma_t < 500$ ps.
       \end{itemize}
                \end{column}
         \begin{column}{0.5\framewidth}
@@ -259,16 +259,17 @@ live window:
     \begin{column}{0.65 \framewidth}
 \textbf{Purpose}:
 \begin{itemize}
-\item momentum measurement with $\Delta p<300$ keV/c FWHM + 950 keV/c energy losses (ST and proton absorber). 
+\item momentum measurement with $\sigma_p<300$ keV/c FWHM + 950 keV/c energy losses (ST and proton absorber). 
 \end{itemize}
 \textbf{Design}:
 \begin{itemize}
+   
+    \item 5 mm diameter and 40-110 cm long straws filled with a 80\%:20\% Ar:CO$_2$ mixture at a pressure of 1 atm;
     \item 3 m downstream of the ST (B$\sim$1 T);
     \item hollow geometry (low $p_T $ particles);
-    \item 3 m long tracker in vacuum;
     \item 96 straws per panel, 6 panels per plane, 2 planes per station;
         \item 18 tracking stations: 216 panels;
-    \item 5 mm diameter and 40-110 cm long straws filled with a 80\%:20\% Ar:CO$_2$ mixture at a pressure of 1 atm.
+        \item 3 m long tracker in vacuum.
        
         
         
@@ -398,183 +399,197 @@ Mu2e tracker will be $\delta$-electrons;
 \end{itemize}
 \end{frame}
 
- \begin{frame}{Description of test stand setup}
+ \begin{frame}{Test stand and data taking logic}
  \vspace{-3mm}
 \begin{columns}
     \begin{column}{0.69\framewidth}
              \setlength{\leftmargini}{1.3em}
       \begin{itemize}
-      \item \textbf{ROC readout validation};
-      \vspace{1mm}
-          \item \textbf{TS1 tracker test stand}: one ROC (one tracker panel-96 channels), one DTC connected to the DAQ computer;
-             \vspace{1mm}
-          \item  Two different ROC data readout modes:
-          \begin{itemize}
-              \item MODE 1: emulated data readout mode;
-              \item \textbf{MODE 2}: digi-FPGA readout mode.
-          \end{itemize}
-             \vspace{1mm}
-          \item digi-FPGAs pulsed by their \textbf{internal pulser} at $f_{gen}$= 250 kHz or 60 kHz;
-             \vspace{1mm}
-          \item \textbf{Event Window} ($T_{EW}$): the time interval between two proton pulses, varied between 700 ns to 50 $\mu$s;
-             \vspace{1mm}
-          \item The ROC firmware has an internal \textbf{hit buffer} which stores up to \textbf{255 hits}.
+    {\footnotesize 
+          \item \textbf{Tracker test stand}: 1 ROC (1 panel-96 channels), 1 DTC installed on DAQ computer;
+            
+          \vspace{1.2mm}
+          \item digi-FPGAs pulsed \textbf{internally} at $f_{gen}$;
+          \vspace{1.2mm}
+          \item Each FPGA has its own generator and they are offset ($\in [0 ,T_{gen}]$) wrt each other;
+          \vspace{1.2mm}
+          \item Channel offsets (same digi-FPGA) are few ns;
+          \vspace{1.2mm}
+          \item \textbf{Event Window} ($T_{EW}$): time between two proton pulses (1.7 $\mu$s), varied $\in$(0.7, 50) $\mu$s;
+          \vspace{1.2mm}
+      \item ROC internal \textbf{hit buffer} stores up to \textbf{255 hits};
+      \vspace{1.2mm}
 
+      
+          }
+          {\footnotesize\item Depending on $T_{gen}=1/f_{gen}$ and $T_{EW}$, data taking can proceed in 2 modes:}
+    \vspace{0.9mm}
+\begin{itemize}
+
+    {\footnotesize\item $N_{gen}\geq255$: $N_{read}=255$ (\textbf{overflow});
+  \item $N_{gen}<255$: $N_{read}<255$ (\textbf{regular}).}
+\end{itemize}
+{\footnotesize
+\vspace{1.2mm}
+\item Generator timing uncorrelated with the EW $\rightarrow$ different number of hits in an EW;
+\vspace{1.2mm}
+\item Channel readout sequence is fixed.
+
+}
       \end{itemize}
           \end{column}
 \begin{column}{0.45\framewidth}
         \begin{figure}[h]
           \centering
-            \includegraphics[width=0.8\columnwidth]{figures/png/Screenshot_20240712_102528.png}
+            \includegraphics[width=0.7\columnwidth]{figures/png/Screenshot_20240712_102528.png}
           \label{fig:enter-label} 
       \end{figure} 
+      \vspace{-4mm}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\columnwidth]{figures/png/Screenshot_20241013_113750.png}
+        \label{fig:enter-label} 
+    \end{figure}
+    \vspace{-5mm}
+      \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.55\columnwidth]{figures/png/Screenshot_20241013_113809.png}
+        \label{fig:enter-label} 
+    \end{figure}
 \end{column}
 \end{columns}
+
+
+
 
           \end{frame}
 
 
 
 
-\begin{frame}{Logic of data taking}
-\begin{columns}
-   \begin{column}{1.15\framewidth} 
-         \setlength{\leftmargini}{1.3em}
-         \vspace{-3mm}
-        \begin{itemize}
-         \item Depending on $T_{gen}=1/f_{gen}$ and $T_{EW}$, the data taking can proceed in two different modes:
-  \begin{itemize}
-  \item $N_{gen}\geq255$: $N_{readout}=255$ (\textbf{overflow mode});
-    \item $N_{gen}<255$: $N_{readout}<255$ (\textbf{underflow mode});
-  \end{itemize}
-      \item Each FPGA has its own generator and pulses from different generators are offset ($\in [0 ,T_{gen}]$) with respect to each other;
-      \item Offsets between channels (same digi-FPGA) are about few ns and can be measured;
-      \item Timing of generator pulses uncorrelated with the beginning of the EW $\rightarrow$ different number of hits in an EW;
-      \item Channel readout sequence is fixed.
-  \end{itemize}
-  \vspace{-4mm}
-              \begin{figure}[H]
-          \centering
-          \includegraphics[width=0.8 \framewidth]{figures/png/finalimg.png}
-          \label{fig:enter-label} 
-      \end{figure}
-   \end{column}
-   \end{columns}
-    \end{frame}
+\begin{frame}{Monte Carlo simulation}
 
 
-    \begin{frame}{Monte Carlo simulation}
-                 \vspace{-3mm}
-    \begin{columns}
-  \begin{column}{0.65\framewidth} 
-        \begin{itemize}
-        {\small
-            \item ROC readout logic emulated with a bit-level C++ simulation;
-            \item Simulated parameters:
-            \begin{itemize}
-                \item number of hits in each channel;
-                \item number of readout hits per event.
-            \end{itemize}
-            \item digi-FPGAs and channel to channel offsets considered. }
-        \end{itemize}
-       {\small  \textbf{Steps of the simulation:}}
+   \vspace{-3mm}
+   \begin{columns}
+ \begin{column}{0.65\framewidth} 
+
+       \begin{itemize}
+       {\footnotesize
+           \item ROC readout logic emulated with a bit-level C++ simulation;
+           \vspace{0.8mm}
+           \item Simulated parameters:
+          \vspace{0.8mm}
+           \begin{itemize}
+            {\footnotesize  \item number of hits in each channel;
+               \item number of readout hits per event.}
+           \end{itemize}
+          \vspace{0.8mm}
+           \item digi-FPGAs and channel-to-channel offsets considered. }
+       \end{itemize}
+      \vspace{0.8mm}
+      {\footnotesize  \textbf{Steps of the simulation:}}
+     \vspace{0.8mm}
 \begin{itemize}
- {\small
+{\footnotesize
 \item EW starts at $t=0$ s;
-  \item The 1st pulse is generated $T_0\in [0 ,T_{gen}]$;
-    \item Next pulses: $T_i = T_{i-1} + T_{gen}$, until $T_i> T_{EW}$;
+\vspace{0.8mm}
+ \item The 1st pulse is generated $T_0\in [0 ,T_{gen}]$;
+\vspace{0.8mm}
+   \item Next pulses: $T_i = T_{i-1} + T_{gen}$, until $T_i> T_{EW}$;
+   \vspace{0.8mm}
 \item Pulses are generated in each channel following the readout sequence;
-  \item The procedure \textit{continues} until all hits 
-  have been $readout$, or $N_{hits}>255$. }
+\vspace{0.8mm}
+ \item The procedure \textit{continues} until all hits 
+ have been $readout$, or $N_{hits}>255$. }
 \end{itemize}
-    \end{column}
-     \begin{column}{0.5\framewidth} 
-      \begin{figure}[H]
-          \centering
-      \includegraphics[width=\columnwidth]{figures/png/Screenshot from 2023-12-03 11-50-50.png}
-      \label{fig:delay1}
-    \end{figure}
+   \end{column}
+   \begin{column}{0.5\framewidth}
     \begin{figure}[H]
-          \centering
-      \includegraphics[width=\columnwidth]{figures/png/Screenshot from 2023-12-03 11-50-33.png}
+        \centering
+    \includegraphics[width=\columnwidth]{figures/png/Screenshot from 2023-12-03 11-50-50.png}
+    \label{fig:delay1}
+  \end{figure}
+  \begin{figure}[H]
+        \centering
+    \includegraphics[width=\columnwidth]{figures/png/Screenshot from 2023-12-03 11-50-33.png}
 
-      \label{fig:delay2}
-    \end{figure}
-       \end{column}
-      
-   \end{columns}
+    \label{fig:delay2}
+  \end{figure}
+   \end{column}
+  \end{columns}
+
+
+
     \end{frame}
 
+    
 
-\begin{frame}{Hit timing distribution: overflow mode}
-\vspace{-4mm}
-\begin{columns}
-    \begin{column}{0.5\framewidth}
-        \begin{figure}[H]
-          \centering
-          \hspace*{-2em}
-        \includegraphics[width=1.\columnwidth]{figures/pdf/figure_00007_timedistr_roc_simulation_ch0_281.pdf}
-          \label{fig:enter-label} 
-          \end{figure}
-    \end{column}
-    \begin{column}{0.5\framewidth}
-        \begin{figure}[H]
-          \centering
-                    \hspace*{-1em}
-        \includegraphics[width=1.\columnwidth]{figures/pdf/figure_00003_timedistr_roc_simulation_ch2_281.pdf}
-          \label{fig:enter-label} 
-          \end{figure} 
-    \end{column}
-\end{columns}
- \begin{columns}
-    \begin{column}{1.15\framewidth}
-    \vspace{0mm}
 
-     \begin{itemize}
-        \item $T_{EW}$ = 50 $\mu$s and $f_{gen}$ = 60 kHz;
-     \item The distribution of the hit time for channel 0 of digi-FPGA-1 (Left) and channel 2 of digi-FPGA-2 (Right);
-     \item Different behaviour for different channels in different FPGAs: Left distribution is uniform, Right one is non-trivial;
-        \item Apparently there are interruptions of channel 2 in the second FPGA;
-        \item This behaviour can be explained with the $occupancy$ plot.
-    \end{itemize}
-         \end{column}
-\end{columns}   
-\end{frame}
-\begin{frame}{Hit timing distribution: regular mode}
-\vspace{-10mm}
-\begin{columns}
-    \begin{column}{0.5\framewidth}
-        \begin{figure}[H]
-          \centering
-          \hspace*{-2em}
-        \includegraphics[width=1.2\columnwidth]{figures/pdf/figure_00001_timedistr_roc_simulation_10538.pdf}
-          \label{fig:enter-label} 
-          \end{figure}
-    \end{column}
-    \begin{column}{0.5\framewidth}
-        \begin{figure}[H]
-          \centering
-                    \hspace*{-1em}
-        \includegraphics[width=1.2\columnwidth]{figures/pdf/figure_00012_timedistr_roc_simulation_ch2_105038.pdf}
-          \label{fig:enter-label} 
-          \end{figure} 
-   \end{column}
-\end{columns}
- \begin{columns}
-    \begin{column}{1.15\framewidth}
-     \begin{itemize}
-        \item $T_{EW}$ = 25 $\mu$s and $f_{gen}$ = 60 kHz;
-      \item The distribution of the hit time for channel 0 of digi-FPGA-1 (Left) and channel 2 of digi-FPGA-2 (Right);
-        \item Same behaviour for different channels in different FPGAs;
-        \item No interruptions of channel 2 in the second FPGA.    \end{itemize}
-             \end{column}
-\end{columns}     
-         
-\end{frame}
+    \begin{frame}{Hit timing distribution}
+        \vspace{-3mm}
+        \begin{columns}
+            \begin{column}{0.5\framewidth}
+                \begin{figure}[H]
+                  \centering
+                  \hspace*{-2em}
+                \includegraphics[width=0.85\columnwidth]{figures/png/Screenshot_20241013_115510.png}
+                  \label{fig:enter-label} 
+                  \end{figure}
+                  \vspace{-4mm}
+                  \begin{figure}[H]
+                    \centering
+                    \hspace*{-2em}
+                  \includegraphics[width=0.85\columnwidth]{figures/png/Screenshot_20241013_115638.png}
+                    \label{fig:enter-label} 
+                    \end{figure}
+            \end{column}
+            \begin{column}{0.5\framewidth}
+                \begin{figure}[H]
+                  \centering
+                            \hspace*{-1em}
+                \includegraphics[width=0.85\columnwidth]{figures/png/Screenshot_20241013_115554.png}
+                  \label{fig:enter-label} 
+                  \end{figure} 
+                  \vspace{-4mm}
+                  \begin{figure}[H]
+                    \centering
+                              \hspace*{-1em}
+                  \includegraphics[width=0.85\columnwidth]{figures/png/Screenshot_20241013_115705.png}
+                    \label{fig:enter-label} 
+                    \end{figure} 
+            \end{column}
+        \end{columns}
+        \begin{columns}
+
+            \begin{column}{1.15\framewidth}
+                \setlength{\leftmargini}{1.3em}
+
+            \vspace{-0.5mm}
+        
+             \begin{itemize}
+           {\footnotesize 
+            \item Hit timing distribution. (Left): CH0, digi-FPGA-1. (Right): CH2, digi-FPGA-2;
+             \item (Top): $T_{EW}$=50 $\mu$s and $f_{gen}$=60 kHz. (Bottom): $T_{EW}$=25 $\mu$s and $f_{gen}$=60 kHz;
+             \item Different behaviour in different channels in different FPGAs;
+             \vspace{-1mm}
+                \item Interruptions of CH2 of digi-FPGA-2 in certain configurations.   }    
+                 \end{itemize}
+                 \end{column}
+        \end{columns}   
+    \end{frame}
+
+    
 
 
 
-\begin{frame}{$Occupancy$}
+
+
+
+
+
+
+\begin{frame}{$Occupancy$ distribution}
 \vspace{-4.4mm}
 \begin{columns}
     \begin{column}{0.5 \framewidth}
@@ -1020,28 +1035,28 @@ across channels.}
       \begin{columns}
         \begin{column}{0.65\framewidth}
                 \setlength{\leftmargini}{1.2em}
-                \vspace{-5mm}
+                \vspace{-7mm}
             \begin{itemize}
-             {\small 
+             {\footnotesize 
              \item \textbf{Calibration goal}: straw longitudinal position resolution $\lesssim$4 cm;
-             \vspace{0.5mm}
+           \vspace{2mm}
              \item TDCs measure arrival times $t_1$ and $t_2$;
-             \vspace{0.5mm}
+           \vspace{2mm}
 
                 \item $v$: \textbf{signal propagation velocity};
-                \vspace{0.5mm}
+              \vspace{2mm}
     \item $x_{\text{track}}$: \textbf{reconstructed track on wire};
-    \vspace{0.5mm}
-                \item \textbf{Calibration}: $v$ from $\Delta t_{12}$ (TDCs) correlated with $x_{\text{track}}$ (\textbf{unbiased});
-                \item $x_{track}$ determined by straw \textbf{"yes or no"} information $\rightarrow$ \textbf{station geometry}.                          
-                } 
-                {\small 
+  \vspace{2mm}
+                \item \textbf{Calibration}: from $\Delta t_{12}$ and $x_{\text{track}}$ $\rightarrow$ $v$;
+              \vspace{2mm}
+                \item $x_{track}$: information about the hit straws $\rightarrow$ \textbf{station geometry};                          
+              \vspace{2mm}
                 \item First calibration with \textbf{cosmics};
-                \vspace{0.5mm}
+                \vspace{2mm}
                 \item $Horizontal$ $\rightarrow$ unbiased reconstruction; 
-                               \vspace{0.5mm}
-                \item \textbf{Operational constraints}: gas system, space, fragility. Designed to be operated \textbf{vertically};
-                  \vspace{0.5mm}
+                               \vspace{2mm}
+                \item Operational constraints ($vertical$);
+                  \vspace{2mm}
                 \item \textbf{Simulation with vertical station to assess biases and feasibility}.}  
             \end{itemize}
         \end{column}
@@ -1072,34 +1087,30 @@ across channels.}
 \begin{column}{0.65\framewidth}
    \setlength{\leftmargini}{1.2em}
       \begin{itemize}
-      {\small \item \textbf{Cosmics as calibration source}:}
-      \vspace{-1mm}
+      {\footnotesize \item \textbf{Cosmics as calibration source}:}
       \begin{itemize}
-    {\small \item standard detector operations;
+    {\footnotesize \item standard detector operations;
     \item flux is $\sim 1 \ \text{cm}^{-2} \text{min}^{-1}$ 
     (for horizontal detectors) and $E_{mean}\sim$ GeV;
     \item MIP;
     \item $v_{\mu}\sim c \rightarrow$ align channel offsets.}
 \end{itemize}
-{\small \item \textbf{Straw information}:}
-\vspace{-1mm}
+{\footnotesize \item \textbf{Straw information}:}
 \begin{itemize}
-    {\small \item the direction $(D_{x,i},D_{y,i})$;
+    {\footnotesize \item the direction $(D_{x,i},D_{y,i})$;
     \item the midpoint $(M_{x,i},M_{y,i})$;
     \item the $z_i$ coordinate.}
 \end{itemize} 
- {\small
+ {\footnotesize
  \item \textbf{Selection}:}
- \vspace{-1mm}
   \begin{itemize}
-   {\small \item  Hits in \textbf{one vertical station};
+   {\footnotesize \item  Hits in \textbf{one vertical station};
     \item \textbf{Straight line in 3D}: $\geq$4 hits at different $z$ $\rightarrow$ $nhits_{face_i}\geq 1$;
     \item \textbf{Resolution}: $nhits_{panel_i}\leq 3$.}
     \end{itemize} 
- {\small \item \textbf{Reconstruction}: }
- \vspace{-1mm}
+ {\footnotesize \item \textbf{Reconstruction}: }
         \begin{itemize}
-        {\small \item $StrawHit$s $\rightarrow$ 1 $ClusterHit$ (face);
+        {\footnotesize \item $StrawHit$s $\rightarrow$ 1 $ClusterHit$ (face);
           \item 2 $ClusterHit$s $\rightarrow$ $StereoHit$ (plane);
           \item 2 $StereoHit$s $\rightarrow$ reconstructed track.}
         \end{itemize}
@@ -1134,24 +1145,22 @@ across channels.}
 \vspace{-8mm}
    \setlength{\leftmargini}{1.2em}
       \begin{itemize}
- {\small
- \item Precise calibration: uniformly distributed hits across the panel;
- \vspace{1.6mm}
-\item (Top): muon selections bring to \textbf{non uniform} and spotty panel illumination;
- \vspace{1.6mm}
+ {\footnotesize
+ 
+\item (Top): selection criteria bring to \textbf{non uniform} and spotty panel illumination;
+ \vspace{3mm}
 \item 4/4 overlap areas limited to \textbf{panel edges};
- \vspace{1.6mm}
+ \vspace{3mm}
 \item \textbf{Time walk effects};
- \vspace{1.6mm}
-\item Selection of \textbf{specific
-muon directions};
- \vspace{1.6mm}
+ \vspace{3mm}
+\item Selection of \textbf{specific muon directions};
+ \vspace{3mm}
 \item (Bottom): $m_{yz}=\Delta y /\Delta z$ distribution;
- \vspace{1.6mm}
+ \vspace{3mm}
 \item No particles with $m_{yz}\sim 0$ (horizontal) and $m_{yz} \rightarrow \infty$ (vertical);
- \vspace{1.6mm}
+ \vspace{3mm}
 \item Mostly with $|m_{yz}| \sim 1$ (\textbf{45° angle});
- \vspace{1.6mm}
+ \vspace{3mm}
 \item Muon \textbf{rate} scaled by $1/\cos^2\theta \sim 1/2$ (45° flux) and $1/\sqrt{2}$ (cosmics striking at 45°).}
 
 \end{itemize}
@@ -1193,28 +1202,26 @@ muon directions};
 \vspace{-6mm}
    \setlength{\leftmargini}{1.2em}
       \begin{itemize}
- {\small
+ {\footnotesize
  \item (Top): \textbf{longitudinal reconstructed position} $x_{track}$ (panel frame);
-  \vspace{1.2mm}
+  \vspace{1.6mm}
  \item $x_{track}$: intersection of the reconstructed track with the mean $z_i$ of the panel;
-   \vspace{1.2mm}
+   \vspace{1.6mm}
  \item  \textbf{Bumps} $\rightarrow$ 4/4 requirement consequence;
-   \vspace{1.2mm}
+   \vspace{1.6mm}
 \item Different bumps $\rightarrow$ different straws;
-  \vspace{1.2mm}
+  \vspace{1.6mm}
 \item (Bottom): longitudinal reconstructed position \textbf{bias} (panel frame);
-  \vspace{1.2mm}
+  \vspace{1.6mm}
  \item $\Delta x = x_{track}-x_{true}$;
-   \vspace{1.2mm}
+   \vspace{1.6mm}
  \item $x_{true}$: MC panel hits mean coordinate;
-   \vspace{1.2mm}
+   \vspace{1.6mm}
 \item The bias ranges between [-6,6] cm;
-  \vspace{1.2mm}
-\item Similar distributions for all panels;
-  \vspace{1.2mm}
+  \vspace{1.6mm}
 \item Different straws with different bias; 
-  \vspace{1.2mm}
-\item $m_{yz}=\frac{\Delta y}{\Delta z}$ not accurately reconstructed.}
+  \vspace{1.6mm}
+\item $m_{yz}=\Delta y/\Delta z$ not accurately reconstructed.}
 
 \end{itemize}
 \end{column}
@@ -1248,22 +1255,21 @@ muon directions};
 \vspace{-8mm}
    \setlength{\leftmargini}{1.2em}
       \begin{itemize}
- {\small
+ {\footnotesize
     \item (Top): 2D distribution of $\Delta x$ vs $x_{true}$;
-    \vspace{1.6mm}
+    \vspace{3mm}
     \item Different \textbf{spots} $\rightarrow$ different overlap regions and muon directions;
-    \vspace{1.6mm}
+    \vspace{3mm}
     \item (Bottom): $\Delta x$ profile vs $x_{true}$;
-    \vspace{1.6mm}
-    \item $x_{track}$ reconstruction \textbf{systematics} $\pm$4 cm;\vspace{1.6mm}
-    \item $m_{yz}=\frac{\Delta y}{\Delta z}$ not accurately reconstructed;
-    \vspace{1.6mm}
+    \vspace{3mm}
+    \item $x_{track}$ reconstruction \textbf{systematics} $\pm$4 cm;
+    \vspace{3mm}
     \item Vertical station: \textbf{opposite $y-z$ orientated muons do not cancel out};
-    \vspace{1.6mm}
+    \vspace{3mm}
         \item First spots: 90° panels overlap;
-        \vspace{1.6mm}
+        \vspace{3mm}
     \item \textbf{Increase of data-taking time};
-    \vspace{1.6mm}
+    \vspace{3mm}
 \item \textbf{This calibration is expected to become challenging}. 
 }
 
