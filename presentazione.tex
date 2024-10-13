@@ -233,7 +233,7 @@
     \begin{columns}
     \begin{column}{0.65 \framewidth}
 {\footnotesize \textbf{Purpose}:}
-\vspace{1mm}
+\vspace{0.5mm}
 \begin{itemize}
     {\footnotesize \item momentum measurement with $\sigma_p<300$ keV/c FWHM + 950 keV/c energy losses (ST and proton absorber). }
     \vspace{2mm}
@@ -248,7 +248,7 @@
     \vspace{2mm}
     \item hollow geometry (low $p_T $ particles);
     \vspace{2mm}
-    \item 96 straws per panel, 6 panels per plane, 2 planes per station;
+    \item 96 straws per panel, 3 panels per face, 2 faces per plane, 2 planes per station;
     \vspace{2mm}
         \item 18 tracking stations: 216 panels;
         \vspace{2mm}
@@ -284,13 +284,14 @@
          {\footnotesize
          \item Signal is readout from both ends by  \textbf{preamps};
          \vspace{5mm}
-         \item Analog signals are sent to the \\ \textbf{DRAC} and processed by 2 \textbf{TDC}s \\ and one \textbf{ADC};
+         \item Analog signals are sent to the \\ \textbf{DRAC} (Digitizer Readout and \\
+         Assembler Controller) and processed \\ by 2 \textbf{TDC}s and one \textbf{ADC};
          \vspace{5mm}
         \item The 2 digi-FPGA create one data \\ packet for each hit with \textbf{two hit} \\ \textbf{times} and \textbf{one waveform};
         \vspace{5mm}
-        \item Data packets sent to \textbf{ROC};
+        \item Data packets sent to \textbf{ROC} (Readout Controller);
         \vspace{5mm}
-        \item ROC transfers data from digi-FPGAs \\ to \textbf{DTC} installed on \textbf{DAQ} \\ computers.}
+        \item ROC transfers data from digi-FPGAs \\ to \textbf{DTC} (Data Transfer Controller) \\ installed on \textbf{DAQ} computers.}
          \end{itemize}
     \end{column}
     \begin{column}{0.5\framewidth}
@@ -454,11 +455,11 @@ Mu2e tracker will be $\delta$-electrons.}
            \item Simulated parameters:
           \vspace{0.8mm}
            \begin{itemize}
-            {\footnotesize  \item number of hits in each channel;
-               \item number of readout hits per event.}
+            {\footnotesize  \item $N_{hits}$ in each channel;
+               \item $N_{read}$ per event.}
            \end{itemize}
           \vspace{0.8mm}
-           \item digi-FPGAs and channel-to-channel offsets considered. }
+           \item digi-FPGAs and channel-to-channel offsets. }
        \end{itemize}
       \vspace{0.8mm}
       {\footnotesize  \textbf{Steps of the simulation:}}
@@ -1341,7 +1342,6 @@ clock of few ns.}
 
 \begin{frame}
 \frametitle{Performance analysis and comparison}
-\vspace{-2mm}
   \begin{columns}
         \begin{column}{1.15\framewidth}
        {\footnotesize Two levels of comparison:}
@@ -1387,23 +1387,29 @@ hits with $E_{dep} >$ 3 keV;
 
 \begin{frame}
     \frametitle{Hit-level comparison}
-    \vspace{-2mm}
+    \vspace{-3mm}
     \begin{columns}
     \begin{column}{0.45\framewidth}
-    \vspace{-3mm}
         \setlength{\leftmargini}{0.7em}
 \begin{itemize}
 {\footnotesize
-    \item (Top Tab): \textbf{PBAR}. $\mu$ and $\pi$ $f_{p,FBH}$ 4x and 3.3x higher;
+    \item $f_p$ and $f_e$: fraction of hits flagged as $p$ and $e^-$;
+    \vspace{1.5mm}
+    \item (Top Tab): \textbf{PBAR}. $\mu$ and $\pi$ $f_{e,FBH}$ 4x and 3.3x higher;
+    \vspace{1.5mm}
       \item $\pi$: higher momenta;
+      \vspace{1.5mm}
       \item (Bottom Tab): \textbf{CE-1BB}. Same results for \textbf{CE-2BB} within 1\%;
+      \vspace{1.5mm}
       \item \textbf{70\% more CE hits flagged} as $\delta$s by FBH wrt DF;
+      \vspace{1.5mm}
       \item \textbf{No $p$ flagging comparison} (FBH identifies only high $E_{dep}$ particles);
-      \item (Left): $e^-$ and $e^+$ $f_e$ vs momentum (FBH);
-           \item 1-2 MeV: Compton;
-           \item >2 MeV: larger $xy$ spread;
-           \item (Right): $e^-$ (pink) and $e^+$ (black) $E$ distribution \\ ($E<2$ MeV);
-           \item $StereoHit$ and $seed$.
+      \vspace{1.5mm}
+      \item (Bottom): $e^-$ and $e^+$ $f_e$ vs momentum (FBH);
+      \vspace{1.5mm}
+      \item 1-2 MeV: Compton;
+           \vspace{1.5mm}
+      \item >2 MeV: larger $xy$ spread.
     }
 \end{itemize}
         \end{column}
@@ -1445,9 +1451,8 @@ hits with $E_{dep} >$ 3 keV;
     \hline
 
     \end{tabular}
-    \caption*{{\footnotesize$f_p$ and $f_e$: fraction of hits flagged as $p$ and $e^-$.}}
+    
     \end{table}
-    \vspace{-8mm}
    
     \begin{figure}[!h]
         \centering
@@ -1469,6 +1474,7 @@ hits with $E_{dep} >$ 3 keV;
 
 \begin{frame}
     \frametitle{High-level comparison}
+        \vspace{-1mm}
      \begin{columns}
     \begin{column}{0.5\framewidth}
     \vspace{-4mm}
@@ -1497,7 +1503,7 @@ hits with $E_{dep} >$ 3 keV;
         \end{table}
         \begin{table}[h!]
     \centering
-            \vspace{-1mm}
+            \vspace{-4mm}
             \hspace*{-0.5em}
     \renewcommand{\arraystretch}{0.7}
     \begin{tabular}{| c | c | c |} 
@@ -1518,13 +1524,13 @@ hits with $E_{dep} >$ 3 keV;
     \setlength{\leftmargini}{1.1em}
     \begin{itemize}
     {\footnotesize   
-    \item FBH (blue) \& DF (red) reconstructed tracks $p$ distributions (two ranges);
+    \item (Bottom): FBH (blue) \& DF (red) reconstructed tracks momentum distributions (two different ranges);
     \item FBH flags less proton hits and these hits are sent to pattern recognition.
     }
     \end{itemize}
     \end{column}
     \end{columns}
-        \vspace{-5mm}
+        \vspace{-6mm}
      \begin{columns}
         \begin{column}{0.5\framewidth}
             \begin{figure}[!h]
