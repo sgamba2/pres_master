@@ -33,14 +33,25 @@ png: $(pngs)
 jpg: $(jpgs) 
 # 	echo $?
 
+#note: $(tex_files) pdf 
+#	if [ ! -d tmp ] ; then mkdir tmp ; fi ; \
+#	pdflatex -output-directory=tmp $^ ; \
+#	cd tmp ; \
+#	bibtex $(note) ; \
+#	cd .. ; \
+#	pdflatex -output-directory=tmp $^
+
 note: $(tex_files) pdf 
 	if [ ! -d tmp ] ; then mkdir tmp ; fi ; \
-	pdflatex -output-directory=tmp $^ ; \
-	cd tmp ; \
-	bibtex $(note) ; \
-	cd .. ; \
-	pdflatex -output-directory=tmp $^
+	pdflatex -output-directory=tmp $(note).tex ; \
+	if [ -f tmp/$(note).aux ]; then bibtex tmp/$(note); fi ; \
+	pdflatex -output-directory=tmp $(note).tex ; \
+	pdflatex -output-directory=tmp $(note).tex
+
 
 all: pdf note
 	echo $(pdfs)
 	echo $?
+	
+.DEFAULT_GOAL := all
+
